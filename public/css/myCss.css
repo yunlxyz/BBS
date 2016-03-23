@@ -1,0 +1,337 @@
+/**
+ * 本CSS重写了bootstrap中的一些样式
+ */
+h4{
+  font-size: 16px;
+}
+.well{
+  background-color: #FFFFFF;
+  border: none;
+  border-radius: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+.glyphicon{
+  top: 2px;
+}
+
+.modal-dialog{
+  margin: 5% auto;
+}
+/**
+ * index
+ */
+.home-title{
+  color: #666;
+}
+.home-title span , .topics-cat-title span{
+  padding-right: 10px;
+}
+.js-collapse{
+  display: none;
+}
+.answer-actions{
+  padding: 8px 0;
+}
+.js-collapse{
+  padding: 0 7px;
+  opacity:0.6;
+}
+.answer-auther-info{
+  padding: 5px 0;
+}
+
+/**
+ * header
+ */
+.add-question{
+  background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #0e7bef, #0d73da) repeat scroll 0 0;
+  border: 1px solid #045bb2;
+  border-radius: 5px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 1px 1px rgba(255, 255, 255, 0.15) inset;
+  color: #fff;
+  cursor: pointer;
+  line-height: 30px;
+  height: 32px;
+  margin-top: 10px;
+  font-size: 14px;
+  padding: 0 13px;
+}
+.offset-head-nav{
+  padding: 0 4%;
+}
+.offset-body{
+  padding: 0 5%;
+}
+
+.navbar{
+  margin-bottom:0px;
+}
+
+.navbar a{
+  color: white;
+}
+
+.navbar .nav > li > a:hover {
+    color: aqua;
+    background-color: #0060c8;
+}
+
+.navbar .nav >li >a:active{
+    color: white;
+    background-color: #0060c8;
+}
+.navbar .nav >li >a:visited{
+    color: white;
+    background-color: #0060c8;
+}
+.navbar .nav > li .dropdown:active {
+    color: aqua;
+    background-color: #282828;
+}
+.navbar .nav > li .dropdown-menu {
+    margin: 0;
+}
+.navbar .nav > li:hover .dropdown-menu {
+    display: block;
+}
+.navbar-brand{
+  font-family: '雅痞-简';
+  font-size: 35px;
+}
+
+
+
+/**
+ * 自定义类
+ */
+.footer{
+  border-top: 1px solid #eee;
+}
+
+.avatar{
+  margin-right: 20px;
+  width: 50px;
+  height: 50px;
+  display: block;
+}
+.avatar img{
+  border: 1px solid #eee;
+  border-radius: 5px 5px 5px 5px;
+}
+.feed-meta{
+  color: #999;
+}
+.feed-meta .glyphicon{
+  font-size: 12px;
+  top: 0px;
+}
+.feed-meta span{
+  padding-right: 3px;
+}
+.feed-meta a{
+  color: #999;
+  margin-right: 15px;
+}
+.feed-main{
+  margin-right: 45px;
+  width: 82%;
+  display: block;
+}
+.feed-item{
+  border-top: 1px solid #eee;
+  display: block;
+  padding: 20px 20px 20px 20px;
+}
+
+.list-group-item{
+  border: none;
+  margin: 0 15%;
+}
+
+.source{
+  color: #999;
+}
+.source a{
+  color: #999;
+}
+
+.question-item-answer{
+  border-top: 1px solid #eee;
+  padding: 20px 0 20px 0;
+}
+
+.main-content-inner{
+  padding : 10px 30px 10px 30px;
+}
+
+.question-detail{
+  padding: 20px 0;
+}
+.question-answer-count{
+  border-top: 1px solid #eee;
+  padding: 10px 0;
+}
+.answer-head{
+  padding: 8px 0;
+}
+.answer-meta-panel{
+  padding: 8px 0;
+}
+
+.answer-editor-wrap{
+  border-top: 1px solid #eee;
+}
+.answer-from{
+  padding: 10px 0;
+}
+.carousel-inner img{
+  width: 100%;
+  max-height: 300px;
+}
+
+
+.profile-section-wrap{
+  margin: 20px 0;
+}
+
+.info-introduce img{
+  width: 100px;
+  height: 100px;
+}
+.info-like , .info-other{
+  padding: 20px 0;
+}
+.section-wrap-title{
+  border-bottom: 1px solid #eee;
+  padding: 15px 0;
+}
+.section-wrap-item{
+  border-top: 1px dotted #eee;
+  padding: 10px 0;
+}
+
+.btn-search-my{
+  margin: 0 0 0 -6px;
+  border-radius: 0 4px 4px 0px;
+  /*background-color: #0060c8;
+  border: none;*/
+}
+
+/**
+ * question-all
+ */
+.logs-questions-item a:hover , .logs-questions-item a:visited{
+  color: #337ab7;
+}
+.zg-gray-normal{
+  color: #999;
+}
+.small-nav-item{
+  margin: 0;
+}
+.small-nav-item small{
+  font-size: 50%;
+}
+.logs-questions-item{
+  border-top: 1px solid #eee;
+  padding-bottom: 10px;
+}
+.logs-questions-detail{
+  margin: 5px 0;
+  padding: 5px 10px;
+  border-left: 3px solid #ddd;
+}
+.logs-questions-meta{
+  color: #999;
+}
+.logs-questions-item ins{
+  background: #eaf0dd none repeat scroll 0 0;
+  color: #5b7918;
+  text-decoration: none;
+}
+.logs-questions-item h4{
+  font-size: 14px;
+}
+.logs-questions-detail div{
+  margin: 10px 0;
+}
+
+/**
+ * topics
+ */
+.topics-cat-title{
+  border-bottom: 1px solid #ccc;
+  padding: 20px 0 20px 0;
+}
+.topics-cat-title h4{
+  color: #666;
+  margin: 0;
+  padding: 0;
+}
+.topics-cat-title a{
+  font-size: 12px;
+  color: #999;
+  font-weight: 400;
+}
+.general-list .item{
+  border-bottom: 1px dotted #eee;
+  float: left;
+  position: relative;
+  display: block;
+  width:50%;
+}
+.general-list .item strong{
+  display: inline-block;
+}
+
+.general-list .item img {
+  position: absolute;
+  left: 0;
+  height: 50px;
+  width: 50px;
+  border-radius: 4px;
+}
+.general-list .item .follow{
+  position: absolute;
+  right: 5%;
+  top: 19%;
+}
+.blk{
+  padding-left: 60px;
+  margin: 18px 15px 18px 0;
+}
+.blk p{
+  overflow: hidden;
+  padding: 3px 0;
+}
+.blk .glyphicon{
+  font-size: 12px;
+  top: 0;
+  /*font-weight: 200;*/
+}
+
+/**
+ * mirror
+ */
+.info-name h3{
+  font-size: 22px;
+  margin: 10px 0;
+}
+.header-user-describe{
+  padding: 0 30px;
+}
+.editable-group{
+  padding: 3px 0;
+}
+.editable-group span{
+  padding-right: 10px;
+  color: #666;
+  opacity: 0.3;
+}
+.info-body , .profile-section-wrap{
+  border: 1px solid #eee;
+  border-radius: 4px 4px 4px 4px;
+  padding: 10px 20px;
+}
