@@ -63,7 +63,7 @@
                       <li><a href="/BBS/index.php/User/Mirror/index">我的主页</a></li>
                       <li><a href="#">设置</a></li>
                       <li role="separator" class="divider"></li>
-                      <li><a href="#">退出</a></li>
+                      <li><a href="/BBS/index.php/User/Login/index">退出</a></li>
                     </ul>
                   </li>
                 </ul>
