@@ -79,6 +79,18 @@
         </div>
       </div>
       <div class="col-md-3">
+        <div class="explore-side-section">
+          <div class="section-title">
+            <h4>热门话题</h4>
+          </div>
+          <ul class="list-group hot-topics">
+            <li class="list-group-item">如何看待「山东疫苗案」未冷藏疫苗流入 24 省事件？</li>
+            <li class="list-group-item">如何看待「山东疫苗案」未冷藏疫苗流入 24 省事件？</li>
+            <li class="list-group-item">Morbi leo risus</li>
+            <li class="list-group-item">Porta ac consectetur ac</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>

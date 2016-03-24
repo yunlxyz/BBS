@@ -311,7 +311,16 @@ h4{
   top: 0;
   /*font-weight: 200;*/
 }
-
+.section-title{
+  padding: 10px 5px;
+  color: #666;
+}
+.hot-topics li{
+  margin: 0;
+  padding: 15px 5px;
+  border-bottom: 1px solid #eee;
+  font-size: 13px;
+}
 /**
  * mirror
  */
@@ -334,4 +343,17 @@ h4{
   border: 1px solid #eee;
   border-radius: 4px 4px 4px 4px;
   padding: 10px 20px;
+}
+.profile-following-topic img{
+  border-radius: 4px;
+  width: 40px;
+  height: 40px;
+}
+.profile-side-section-title{
+  padding: 20px 0;
+  font-weight: 500;
+  color: #666;
+}
+.mirror-sidebar{
+  padding: 0 15px;
 }

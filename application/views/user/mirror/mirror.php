@@ -53,7 +53,23 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4">setting</div>
+      <div class="col-md-4">
+        <div class="mirror-sidebar">
+          <div class="side-section-inner">
+            <div class="profile-side-section-title">
+              关注了<a href="#">20个话题</a>
+            </div>
+            <div class="profile-following-topic">
+              <a href="#"><img src="http://img2.imgtn.bdimg.com/it/u=2001048216,3423073968&fm=23&gp=0.jpg" alt="图片" /></a>
+              <a href="#"><img src="http://img2.imgtn.bdimg.com/it/u=2001048216,3423073968&fm=23&gp=0.jpg" alt="图片" /></a>
+              <a href="#"><img src="http://img2.imgtn.bdimg.com/it/u=2001048216,3423073968&fm=23&gp=0.jpg" alt="图片" /></a>
+              <a href="#"><img src="http://img2.imgtn.bdimg.com/it/u=2001048216,3423073968&fm=23&gp=0.jpg" alt="图片" /></a>
+              <a href="#"><img src="http://img2.imgtn.bdimg.com/it/u=2001048216,3423073968&fm=23&gp=0.jpg" alt="图片" /></a>
+              <a href="#"><img src="http://img2.imgtn.bdimg.com/it/u=2001048216,3423073968&fm=23&gp=0.jpg" alt="图片" /></a>
+            </div>
+          </div>
+        </div>
+      </div>
     <div>
   </div>
   <div class="col-md-1"></div>
