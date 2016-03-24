@@ -11,7 +11,8 @@ class News extends CI_Controller{
   }
 
   public function index(){
-    $this->load->view('user/template/header');
+    $data['title'] = '发现,每天不一样的湖大 - 沙湖';
+    $this->load->view('user/template/header' , $data);
     $this->load->view('user/news/news');
     $this->load->view('user/template/footer');
   }

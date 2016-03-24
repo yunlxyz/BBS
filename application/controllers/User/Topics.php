@@ -11,7 +11,8 @@ class Topics extends CI_Controller{
   }
 
   public function index(){
-    $this->load->view('user/template/header');
+    $data['title'] = '话题广场 - 沙湖';
+    $this->load->view('user/template/header' , $data);
     $this->load->view('user/question/topics');
     $this->load->view('user/template/footer');
   }

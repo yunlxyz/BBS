@@ -5,12 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>首页－社区</title>
-    <!-- <link href="<?php echo base_url();?>public/css/bootstrap.min.css" rel="stylesheet"> -->
+    <title><?php echo $title;?></title>
     <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url();?>public/css/myCss.css" rel="stylesheet">
     <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
-    <!-- <script src="<?php echo base_url();?>public/js/jquery.min.js"></script> -->
     <script src="<?php echo base_url();?>public/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url();?>public/js/my_js.js"></script>
   </head>

@@ -11,7 +11,8 @@ class Mirror extends CI_Controller{
   }
 
   public function index(){
-    $this->load->view('user/template/header');
+    $data['title'] = '未闻花名 的个人主页 - 沙湖';
+    $this->load->view('user/template/header' , $data);
     $this->load->view('User/mirror/mirror');
     $this->load->view('user/template/footer');
   }

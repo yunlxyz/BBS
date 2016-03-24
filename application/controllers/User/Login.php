@@ -11,9 +11,8 @@ class Login extends CI_Controller{
   }
 
   public function index(){
-    // $this->load->view('user/template/header');
-    $this->load->view('User/login/login');
-    // $this->load->view('user/template/footer');
+    $data['title'] = '沙湖 － 带你遨游湖大，走向不一样的世界';
+    $this->load->view('User/login/login' , $data);
   }
 }
 

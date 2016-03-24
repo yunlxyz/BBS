@@ -13,7 +13,9 @@ class Index extends CI_Controller{
   }
 
   public function index(){
-    $this->load->view('user/template/header');
+    $data['title'] = '首页 - 沙湖社区';
+
+    $this->load->view('user/template/header' , $data);
     $this->load->view('user/index');
     $this->load->view('user/template/footer');
   }

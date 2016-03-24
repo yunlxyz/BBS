@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bootstrap In Practice - Landing Page Example</title>
+    <title><?php echo $title;?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Bootstrap -->
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet" />
     <link href="http://fonts.googleapis.com/css?family=Abel|Open+Sans:400,600" rel="stylesheet" />
     <style>
-        /* http://css-tricks.com/perfect-full-page-background-image/ */
         html {
             background: url(img/6133364748_89f2365922_o.jpg) no-repeat center center fixed;
             -webkit-background-size: cover;
