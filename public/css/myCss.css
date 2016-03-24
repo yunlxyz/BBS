@@ -1,6 +1,10 @@
 /**
  * 本CSS重写了bootstrap中的一些样式
  */
+body{
+  line-height: 1.7;
+  font-size: 13px;
+}
 h4{
   font-size: 16px;
 }
@@ -15,10 +19,13 @@ h4{
 .glyphicon{
   top: 2px;
 }
+.list-group{
 
+}
 .modal-dialog{
   margin: 5% auto;
 }
+
 /**
  * index
  */
@@ -39,7 +46,66 @@ h4{
   opacity:0.6;
 }
 .answer-auther-info{
+  border-bottom: 1px solid #eee;
   padding: 5px 0;
+}
+.zantong{
+  font-size: 12px;
+  color: #999;
+}
+.zantong a{
+  padding: 0 7px;
+  color: #999;
+}
+.author-link{
+  color: black;
+  font-weight: 600;
+}
+.bio{
+  font-size: 13px;
+}
+.content{
+  font-size: 13px;
+}
+.avatar-link img{
+  border-radius: 4px;
+  width: 28px;
+  height: 28px;
+  margin-top: -2px;
+}
+.detail-answer{
+  padding: 10px 0;
+}
+.summary{
+  padding: 10px 0;
+}
+.side-nav-group{
+  border-bottom: 1px solid #eee;
+  padding-bottom: 12px;
+  margin-left: 20px;
+}
+.side-nav-group li{
+  margin: 0;
+  padding: 12px 0 0 0px;
+  border: none;
+  color: #666;
+  font-size: 13px;
+}
+.list-group-item a:link{
+  color: #666;
+}
+.list-group-item a:visited{
+  color: #666;
+}
+.list-group-item a:hover{
+  color: #337ab7;
+  text-decoration: none;
+}
+.list-group-item a:active{
+  color: #666;
+}
+.list-group-item a{
+  padding-left: 10px;
 }
 
 /**
@@ -66,6 +132,7 @@ h4{
 }
 
 .navbar{
+  font-size: 14px;
   margin-bottom:0px;
 }
 
@@ -101,8 +168,6 @@ h4{
   font-size: 35px;
 }
 
-
-
 /**
  * 自定义类
  */
@@ -135,41 +200,34 @@ h4{
   margin-right: 15px;
 }
 .feed-main{
-  margin-right: 45px;
-  width: 82%;
+  margin-right: 0px;
+  width: 89%;
   display: block;
 }
 .feed-item{
   border-top: 1px solid #eee;
   display: block;
-  padding: 20px 20px 20px 20px;
+  padding: 20px 0px 20px 20px;
 }
-
-.list-group-item{
-  border: none;
-  margin: 0 15%;
-}
-
 .source{
   color: #999;
 }
 .source a{
   color: #999;
 }
-
 .question-item-answer{
   border-top: 1px solid #eee;
   padding: 20px 0 20px 0;
 }
-
 .main-content-inner{
   padding : 10px 30px 10px 30px;
 }
-
 .question-detail{
-  padding: 20px 0;
+  padding: 10px 0;
 }
 .question-answer-count{
+  font-weight: 600;
+  font-size: 14px;
   border-top: 1px solid #eee;
   padding: 10px 0;
 }
@@ -179,8 +237,8 @@ h4{
 .answer-meta-panel{
   padding: 8px 0;
 }
-
 .answer-editor-wrap{
+  padding: 20px 0;
   border-top: 1px solid #eee;
 }
 .answer-from{
@@ -190,22 +248,18 @@ h4{
   width: 100%;
   max-height: 300px;
 }
-
-
 .profile-section-wrap{
   margin: 20px 0;
 }
 
 .info-introduce img{
-  width: 100px;
-  height: 100px;
+  width: 100px;height: 100px;
 }
 .info-like , .info-other{
   padding: 20px 0;
 }
 .section-wrap-title{
   border-bottom: 1px solid #eee;
-  padding: 15px 0;
 }
 .section-wrap-item{
   border-top: 1px dotted #eee;
@@ -215,10 +269,15 @@ h4{
 .btn-search-my{
   margin: 0 0 0 -6px;
   border-radius: 0 4px 4px 0px;
-  /*background-color: #0060c8;
-  border: none;*/
 }
 
+/**
+ * question
+ */
+
+.question-info{
+  color: #999;
+}
 /**
  * question-all
  */
@@ -236,11 +295,10 @@ h4{
 }
 .logs-questions-item{
   border-top: 1px solid #eee;
-  padding-bottom: 10px;
+  padding: 0 0 10px 15px;
 }
 .logs-questions-detail{
-  margin: 5px 0;
-  padding: 5px 10px;
+  margin: 5px 0;padding: 5px 10px;
   border-left: 3px solid #ddd;
 }
 .logs-questions-meta{
@@ -267,13 +325,11 @@ h4{
 }
 .topics-cat-title h4{
   color: #666;
-  margin: 0;
-  padding: 0;
+  margin: 0;padding: 0;
 }
 .topics-cat-title a{
   font-size: 12px;
   color: #999;
-  font-weight: 400;
 }
 .general-list .item{
   border-bottom: 1px dotted #eee;
@@ -287,20 +343,15 @@ h4{
 }
 
 .general-list .item img {
-  position: absolute;
-  left: 0;
-  height: 50px;
-  width: 50px;
+  position: absolute;left: 0;
+  height: 50px;width: 50px;
   border-radius: 4px;
 }
 .general-list .item .follow{
-  position: absolute;
-  right: 5%;
-  top: 19%;
+  position: absolute; right: 5%;top: 19%;
 }
 .blk{
-  padding-left: 60px;
-  margin: 18px 15px 18px 0;
+  padding-left: 60px; margin: 18px 15px 18px 0;
 }
 .blk p{
   overflow: hidden;
@@ -309,17 +360,23 @@ h4{
 .blk .glyphicon{
   font-size: 12px;
   top: 0;
-  /*font-weight: 200;*/
 }
 .section-title{
   padding: 10px 5px;
   color: #666;
 }
 .hot-topics li{
-  margin: 0;
   padding: 15px 5px;
-  border-bottom: 1px solid #eee;
-  font-size: 13px;
+  border: none;
+}
+
+.profile-setion-time{
+  color: #999;
+}
+.question_link a:link{
+  color: #0062c8;
+  font-weight: 600;
+  font-size: 15px;
 }
 /**
  * mirror

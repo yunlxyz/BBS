@@ -17,7 +17,7 @@ $(document).ready(function(){
     $(this).parent().parent().children('.answer-actions').children('.js-collapse').css("position" , "fixed");
     $(this).parent().parent().children('.answer-actions').children('.js-collapse').css("display" , "inline-block");
     $(this).parent().parent().children('.answer-actions').children('.js-collapse').css("bottom" , "10px");
-    $(this).parent().parent().children('.answer-actions').children('.js-collapse').css("right" , "38%");
+    $(this).parent().parent().children('.answer-actions').children('.js-collapse').css("right" , "32%");
     $(this).parent().parent().children('.answer-actions').data('expend' , '1');
   })
   $('.js-collapse').on('click' , function(){
@@ -35,7 +35,7 @@ $(document).ready(function(){
       if ((x.top - top) > $(window).height() && $(window).height() > (y.top - top) > 0) {
         $(this).children('.is-sticky').css("position" , "fixed");
         $(this).children('.is-sticky').css("bottom" , "10px");
-        $(this).children('.is-sticky').css("right" , "38%");
+        $(this).children('.is-sticky').css("right" , "32%");
         $(this).children('.is-sticky').css("display" , "inline-block");
       }else {
         $(this).children('.is-sticky').css("position" , "static");

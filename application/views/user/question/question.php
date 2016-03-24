@@ -8,14 +8,18 @@
           <div class="col-md-12 clearfix">
             <div class="main-content-inner">
               <div class="zm-tag">
-                <span class="label label-default">标签1</span>
-                <span class="label label-default">标签2</span>
-                <span class="label label-default">标签3</span>
-                <span class="label label-default">标签4</span>
-                <span class="label label-default">标签5</span>
+                <span class="label label-primary">标签1</span>
+                <span class="label label-primary">标签2</span>
+                <span class="label label-primary">标签3</span>
+                <span class="label label-primary">标签4</span>
+                <span class="label label-primary">标签5</span>
               </div>
-              <div class="question-title">
+              <div class="question-title clearfix">
                 <h4>20 岁女生怎么买到有档次而不奢侈的衣服？</h4>
+                <div class="question-info clearfix">
+                  <span>提问者</span>
+                  <div class="pull-right">提问于：2016-03-24 18:00:00</div>
+                </div>
               </div>
               <div class="question-detail">
                 <p>
@@ -25,34 +29,48 @@
                 </p>
               </div>
               <div class="question-answer-count">
-                回答条数
+                100个回答
               </div>
               <div class="question-answer">
                 <div class="question-item-answer">
-                  <div class="answer-head">回答者名称、简介</div>
+                  <div class="answer-head">
+                    <a href="#" class="avatar-link pull-right"><img src="http://localhost/BBS/public/images/demo.jpg" /></a>
+                    <a href="#" class="author-link">回答者</a><span class="bio">,个人简介</span></div>
                   <div class="answer-text">
-                    要盲目迷信基础单品，全基础单品只有那种靠颜和身材身高撑住的妹子才能穿出效果，普通身材的穿起来会很平淡，而且基础单品挺考验搭配功力的，配得好挺时髦，配的不好挺路人，所以穿衣服尽量选择适合自己的，不要盲目迷信《我的一百件基础单品》这种书，它并不实用，外国人五官立体，穿件无图案T恤都能突出五官显得简洁好看，但是中国人的五官没那么立体，有可能穿起来效果会平淡（也有很多妹子能穿好看，我只是举例），关键是要试，如果试着不好看就不要买了，不要为买基础单品而买，要看成效
-                    作者：匿名用户
-                    链接：https://www.zhihu.com/question/29174887/answer/43531054
-                    来源：知乎
-                    著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+                    <p>要盲目迷信基础单品，全基础单品只有那种靠颜和身材身高撑住的妹子才能穿出效果，普通身材的穿起来会很平淡，而且基础单品挺考验搭配功力的，配得好挺时髦，配的不好挺路人，所以穿衣服尽量选择适合自己的，不要盲目迷信《我的一百件基础单品》这种书，它并不实用，外国人五官立体，穿件无图案T恤都能突出五官显得简洁好看，但是中国人的五官没那么立体，有可能穿起来效果会平淡（也有很多妹子能穿好看，我只是举例），关键是要试，如果试着不好看就不要买了，不要为买基础单品而买，要看成效</p>
+                    <div class="zantong">
+                      <a href="#"><span class="glyphicon glyphicon-thumbs-up"><span></a>未闻花名、ABC等10人赞同
+                      <time class="pull-right">回答于：2016-03-24 18:00:00</time>
+                    </div>
                   </div>
-                  <div class="answer-meta-panel">点赞数</div>
                 </div>
                 <div class="question-item-answer">
-                  <div class="answer-head">回答者名称、简介</div>
+                  <div class="answer-head">
+                    <a href="#" class="avatar-link pull-right"><img src="http://localhost/BBS/public/images/demo.jpg" /></a>
+                    <a href="#" class="author-link">回答者</a><span class="bio">,个人简介</span></div>
                   <div class="answer-text">
-                    要盲目迷信基础单品，全基础单品只有那种靠颜和身材身高撑住的妹子才能穿出效果，普通身材的穿起来会很平淡，而且基础单品挺考验搭配功力的，配得好挺时髦，配的不好挺路人，所以穿衣服尽量选择适合自己的，不要盲目迷信《我的一百件基础单品》这种书，它并不实用，外国人五官立体，穿件无图案T恤都能突出五官显得简洁好看，但是中国人的五官没那么立体，有可能穿起来效果会平淡（也有很多妹子能穿好看，我只是举例），关键是要试，如果试着不好看就不要买了，不要为买基础单品而买，要看成效
-                    作者：匿名用户
-                    链接：https://www.zhihu.com/question/29174887/answer/43531054
-                    来源：知乎
-                    著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+                    <p>要盲目迷信基础单品，全基础单品只有那种靠颜和身材身高撑住的妹子才能穿出效果，普通身材的穿起来会很平淡，而且基础单品挺考验搭配功力的，配得好挺时髦，配的不好挺路人，所以穿衣服尽量选择适合自己的，不要盲目迷信《我的一百件基础单品》这种书，它并不实用，外国人五官立体，穿件无图案T恤都能突出五官显得简洁好看，但是中国人的五官没那么立体，有可能穿起来效果会平淡（也有很多妹子能穿好看，我只是举例），关键是要试，如果试着不好看就不要买了，不要为买基础单品而买，要看成效</p>
+                    <div class="zantong">
+                      <a href="#"><span class="glyphicon glyphicon-thumbs-up"><span></a>未闻花名、ABC等10人赞同
+                      <time class="pull-right">回答于：2016-03-24 18:00:00</time>
+                    </div>
                   </div>
-                  <div class="answer-meta-panel">点赞数</div>
+                </div>
+                <div class="question-item-answer">
+                  <div class="answer-head">
+                    <a href="#" class="avatar-link pull-right"><img src="http://localhost/BBS/public/images/demo.jpg" /></a>
+                    <a href="#" class="author-link">回答者</a><span class="bio">,个人简介</span></div>
+                  <div class="answer-text">
+                    <p>要盲目迷信基础单品，全基础单品只有那种靠颜和身材身高撑住的妹子才能穿出效果，普通身材的穿起来会很平淡，而且基础单品挺考验搭配功力的，配得好挺时髦，配的不好挺路人，所以穿衣服尽量选择适合自己的，不要盲目迷信《我的一百件基础单品》这种书，它并不实用，外国人五官立体，穿件无图案T恤都能突出五官显得简洁好看，但是中国人的五官没那么立体，有可能穿起来效果会平淡（也有很多妹子能穿好看，我只是举例），关键是要试，如果试着不好看就不要买了，不要为买基础单品而买，要看成效</p>
+                    <div class="zantong">
+                      <a href="#"><span class="glyphicon glyphicon-thumbs-up"><span></a>未闻花名、ABC等10人赞同
+                      <time class="pull-right">回答于：2016-03-24 18:00:00</time>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div class="answer-editor-wrap">
-                <div class="answer-from">回答者</div>
+                <div class="answer-from">未闻花名</div>
                 <div id="summernote"></div>
                 <script>
                   $(document).ready(function() {
@@ -60,7 +78,7 @@
                   });
                 </script>
                 <div class="answer-command text-right">
-                  <button type="button" class="btn btn-primary">发布回答</button>
+                  <button type="button" class="btn btn-primary">发布</button>
                 </div>
               </div>
             </div>
@@ -68,14 +86,18 @@
         </div>
       </div>
       <div class="col-md-3">
-        <h1>相关问题</h1>
-        <ul class="list-group">
-          <li class="list-group-item">Cras justo odio</li>
-          <li class="list-group-item">Dapibus ac facilisis in</li>
-          <li class="list-group-item">Morbi leo risus</li>
-          <li class="list-group-item">Porta ac consectetur ac</li>
-          <li class="list-group-item">Vestibulum at eros</li>
-        </ul>
+        <div class="explore-side-section">
+          <div class="section-title">
+            <h4>热门话题</h4>
+          </div>
+          <ul class="list-group hot-topics">
+            <li class="list-group-item">如何看待「山东疫苗案」未冷藏疫苗流入 24 省事件？</li>
+            <li class="list-group-item">如何看待「山东疫苗案」未冷藏疫苗流入 24 省事件？</li>
+            <li class="list-group-item">Morbi leo risus</li>
+            <li class="list-group-item">Porta ac consectetur ac</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>

@@ -1,4 +1,4 @@
-<div class="row" style="margin-top:5%;">
+  <div class="row" style="margin-top:5%;">
   <div class="col-md-1"></div>
   <div class="col-md-10 offset-body">
     <div class="row">
@@ -39,16 +39,16 @@
           </div>
           <div class="section-wrap-content">
             <div class="section-wrap-item">
-              <div>动态名称</div>
-              <div>动态内容</div>
+              <span class="profile-setion-time">于：2016-03-24 18:00:00 关注了问题</span>
+              <div class="question_link"><a href="#">怎样深入学习php，成为php高手？</a></div>
             </div>
             <div class="section-wrap-item">
-              <div>动态名称</div>
-              <div>动态内容</div>
+              <span class="profile-setion-time">于：2016-03-24 18:00:00 关注了问题</span>
+              <div class="question_link"><a href="#">怎样深入学习php，成为php高手？</a></div>
             </div>
             <div class="section-wrap-item">
-              <div>动态名称</div>
-              <div>动态内容</div>
+              <span class="profile-setion-time">于：2016-03-24 18:00:00 关注了问题</span>
+              <div class="question_link"><a href="#">怎样深入学习php，成为php高手？</a></div>
             </div>
           </div>
         </div>
