@@ -99,7 +99,7 @@
           <li class="list-group-item"><span class="glyphicon glyphicon-list-alt"></span><a href="/BBS/index.php/User/Question/index_all">所有问题</a></li>
           <li class="list-group-item"><span class="glyphicon glyphicon-th-large"></span><a href="/BBS/index.php/User/Topics/index">话题广场</a></li>
           <li class="list-group-item"><span class="glyphicon glyphicon-star-empty"></span><a href="#">我的收藏</a></li>
-          <li class="list-group-item"><span class="glyphicon glyphicon-heart"></span><a href="#">我关注的问题</a></li>
+          <li class="list-group-item"><span class="glyphicon glyphicon-heart"></span><a href="/BBS/index.php/User/Follow/index">我关注的问题</a></li>
         </ul>
       </div>
     </div>

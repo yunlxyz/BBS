@@ -404,3 +404,52 @@ h4{
 .mirror-sidebar{
   padding: 0 15px;
 }
+
+/**
+ * follow
+ */
+.follow-section-item{
+  border-bottom: 1px dotted #eee;
+  padding: 13px 0;
+}
+.follow-question{
+  margin: 0;
+  padding: 0 0 5px 0;
+}
+.follow-title{
+  font-size: 15px;
+  font-weight: 700;
+  color: #666;
+  border-bottom: 1px solid #ccc;
+  margin-left: -5px;
+  padding: 10px 0;
+}
+.follow-vote-count{
+  background: #eff6fa none repeat scroll 0 0;
+  width: 50px;
+  height: 40px;
+  text-align: center;
+  border-radius: 4px;
+  color: #259;
+  line-height: 20px;
+}
+.follow-vote-num{
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  padding: 2px 0 3px;
+}
+.follow-vote-type{
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1;
+}
+.follow-section-main{
+  margin-left: 70px;
+  padding: 5px 0;
+}
+.follow-meta{
+  color: #999;
+  font-size: 12px;
+  font-weight: 400;
+}
