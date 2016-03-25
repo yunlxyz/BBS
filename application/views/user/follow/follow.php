@@ -21,7 +21,7 @@
                 </div>
               </div>
             </div>
-            
+
             <div class="follow-section-item">
               <span class="follow-vote-count pull-left">
                 <div class="follow-vote-num">123</div>
