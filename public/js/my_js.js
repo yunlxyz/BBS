@@ -1,11 +1,13 @@
+$(function () { $("[data-toggle='tooltip']").tooltip(); });
+
 $(document).ready(function(){
   show();
   function show(){
     var text = $.trim($('.detail-answer').text());
     var tmp_div = "<a href='javascript:void(0);' class='toggle-expand'>... 显示全部</a>";
-    if(text.length > 50){
+    if(text.length > 100){
       $('.detail-answer').css('display','none');
-      $('.summary').text(text.substring(0 , 50));
+      $('.summary').text(text.substring(0 , 100));
     }
     $('.summary').append(tmp_div);
   }
@@ -42,4 +44,8 @@ $(document).ready(function(){
       }
     })
   })
+
+  $(".source").mouseover(function(){
+    $(".source").data("toggle" , "tooltip");
+  });
 });
