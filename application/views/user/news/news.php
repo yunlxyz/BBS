@@ -49,24 +49,26 @@
   <div class="col-md-1"></div>
   <div class="col-md-10 offset-body">
     <div class="row">
-      <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-          <img src="http://img2.3lian.com/2014/f5/158/d/86.jpg" alt="...">
-          <div class="caption">
-            <h3>新闻标题</h3>
-            <p>新闻副标题</p>
-            <div class="collapse" id="collapseExample1">
-              <div class="well">
-                新闻详细内容
+      <?php foreach($news as $item):?>
+        <div class="col-sm-6 col-md-4">
+          <div class="thumbnail">
+            <img src="http://img2.3lian.com/2014/f5/158/d/86.jpg" alt="...">
+            <div class="caption">
+              <h3><?php echo $item->news_title;?></h3>
+              <p><?php echo $item->news_subtitle;?></p>
+              <div class="collapse" id="collapseExample<?php echo $item->id;?>">
+                <div class="well">
+                  <?php echo $item->news_decs;?>
+                </div>
               </div>
+              <p class="clearfix">
+                <a class="btn btn-primary pull-right" role="button" data-toggle="collapse" href="#collapseExample<?php echo $item->id;?>" aria-expanded="false" aria-controls="collapseExample1">阅读</a>
+              </p>
             </div>
-            <p class="clearfix">
-              <a class="btn btn-primary pull-right" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">阅读</a>
-            </p>
           </div>
         </div>
-      </div>
-      <div class="col-sm-6 col-md-4">
+      <?php endforeach;?>
+      <!-- <div class="col-sm-6 col-md-4">
         <div class="thumbnail">
           <img src="http://ww1.sinaimg.cn/mw600/aa8725c6gw1e7e1wq2brxj20dw07tq4b.jpg" alt="...">
           <div class="caption">
@@ -82,24 +84,7 @@
             </p>
           </div>
         </div>
-      </div>
-      <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-          <img src="http://img2.imgtn.bdimg.com/it/u=2555572336,2227732874&fm=21&gp=0.jpg" alt="...">
-          <div class="caption">
-            <h3>新闻标题</h3>
-            <p>新闻副标题</p>
-            <div class="collapse" id="collapseExample">
-              <div class="well">
-                新闻详细内容
-              </div>
-            </div>
-            <p class="clearfix">
-              <a class="btn btn-primary pull-right" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">阅读</a>
-            </p>
-          </div>
-        </div>
-      </div>
+      </div> -->
     </div>
   </div>
   <div class="col-md-1"></div>

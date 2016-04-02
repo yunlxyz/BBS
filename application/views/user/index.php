@@ -15,7 +15,7 @@
                 <div class="feed-main pull-left">
                   <div class="source">来自 <a href="#" data-placement="auto bottom" title="顶部的 Tooltip"><?php echo $item['question']['topic_title'];?></a></div>
                   <div class="content clearfix">
-                    <h5><a class="question-link" href="/BBS/index.php/User/Question/index/<?php echo $item['question']['id'];?>"><?php echo $item['question']['question_title'];?></a></h5>
+                    <h5><a class="question-link" href="/BBS/index.php/User/Question/index/<?php echo $item['question']['id'];?>" target="_blank"><?php echo $item['question']['question_title'];?></a></h5>
                     <div class="answer-auther-info clearfix">
                       <a href="#" class="avatar-link pull-right"><img src="<?php echo $item['answer']['user_avatar'];?>" /></a>
                       <a href="#" class="author-link"><?php echo $item['answer']['answerer'];?></a><span class="bio">,<?php echo $item['answer']['introduction'];?></span>
