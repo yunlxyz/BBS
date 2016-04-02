@@ -13,12 +13,12 @@
                   <div><img src="http://localhost/BBS/public/images/demo.jpg" style="width:50px;height:50px;" /></div>
                 </div>
                 <div class="feed-main pull-left">
-                  <div class="source">来自 <a href="#" data-placement="auto bottom" title="顶部的 Tooltip"><?php echo $item['question']['question_class'];?></a></div>
+                  <div class="source">来自 <a href="#" data-placement="auto bottom" title="顶部的 Tooltip"><?php echo $item['question']['topic_title'];?></a></div>
                   <div class="content clearfix">
-                    <h5><a class="question-link" href="/BBS/index.php/User/Question/index"><?php echo $item['question']['question_title'];?></a></h5>
+                    <h5><a class="question-link" href="/BBS/index.php/User/Question/index/<?php echo $item['question']['id'];?>"><?php echo $item['question']['question_title'];?></a></h5>
                     <div class="answer-auther-info clearfix">
-                      <a href="#" class="avatar-link pull-right"><img src="http://localhost/BBS/public/images/demo.jpg" /></a>
-                      <a href="#" class="author-link"><?php echo $item['question']['questioner'];?></a><span class="bio">,个人简介</span>
+                      <a href="#" class="avatar-link pull-right"><img src="<?php echo $item['answer']['user_avatar'];?>" /></a>
+                      <a href="#" class="author-link"><?php echo $item['answer']['answerer'];?></a><span class="bio">,<?php echo $item['answer']['introduction'];?></span>
                     </div>
                     <div class="detail-answer">
                       <p><?php echo $item['answer']['answer_decs'];?></p>
@@ -36,35 +36,9 @@
                 </div>
               </div>
             <?php endforeach;?>
-            <div class="feed-item clearfix">
-              <div class="avatar pull-left text-center">
-                <div><img src="http://localhost/BBS/public/images/demo.jpg" style="width:50px;height:50px;" /></div>
-              </div>
-              <div class="feed-main pull-left">
-                <div class="source">来自 <a href="#">分类</a></div>
-                <div class="content clearfix">
-                  <h5><a class="question-link" href="/BBS/index.php/User/Question/index">不管有没有人看…我写一个真实的故事?</a></h5>
-                  <div class="answer-auther-info clearfix">
-                    <a href="#" class="avatar-link pull-right"><img src="http://localhost/BBS/public/images/demo.jpg" /></a>
-                    <a href="#" class="author-link">回答者</a><span class="bio">,个人简介</span>
-                  </div>
-                  <div class="detail-answer">
-                    <p>不管有没有人看…我写一个真实的故事。大学时期我是校队的控卫，工作之后因为懒加忙，打球打的少了，球感生疏，菜如狗…不管有没有人看…我写一个真实的故事。大学时期我是校队的控卫，工作之后因为懒加忙，打球打的少了，球感生疏，菜如狗…不管有没有人看…我写一个真实的故事。大学时期我是校队的控卫，工作之后因为懒加忙，打球打的少了，球感生疏，菜如狗…不管有没有人看…我写一个真实的故事。大学时期我是校队的控卫，工作之后因为懒加忙，打球打的少了，球感生疏，菜如狗…不管有没有人看…我写一个真实的故事。大学时期我是校队的控卫，工作之后因为懒加忙，打球打的少了，球感生疏，菜如狗…不管有没有人看…我写一个真实的故事。大学时期我是校队的控卫，工作之后因为懒加忙，打球打的少了，球感生疏，菜如狗…不管有没有人看…我写一个真实的故事。大学时期我是校队的控卫，工作之后因为懒加忙，打球打的少了，球感生疏，菜如狗…不管有没有人看…我写一个真实的故事。大学时期我是校队的控卫，工作之后因为懒加忙，打球打的少了，球感生疏，菜如狗…不管有没有人看…我写一个真实的故事。大学时期我是校队的控卫，工作之后因为懒加忙，打球打的少了，球感生疏，菜如狗…不管有没有人看…我写一个真实的故事。大学时期我是校队的控卫，工作之后因为懒加忙，打球打的少了，球感生疏，菜如狗…不管有没有人看…我写一个真实的故事。大学时期我是校队的控卫，工作之后因为懒加忙，打球打的少了，球感生疏，菜如狗…不管有没有人看…我写一个真实的故事。大学时期我是校队的控卫，工作之后因为懒加忙，打球打的少了，球感生疏，菜如狗…</p>
-                    <div class="zantong">
-                      <a href="#"><span class="glyphicon glyphicon-thumbs-up"><span></a>未闻花名、ABC等10人赞同
-                    </div>
-                  </div>
-                  <div class="summary"></div>
-                  <div class="feed-meta answer-actions" data-resourceid="1">
-                    <button type="button" class="btn btn-primary pull-right js-collapse"><span class="glyphicon glyphicon-menu-up"></span>收起</button>
-                    <a href="#"><span class="glyphicon glyphicon-plus feed-icon"></span>关注问题</a>
-                    <a href="#"><span class="glyphicon glyphicon-comment feed-icon"></span>123回答</a>
-                  </div>
-                </div>
-              </div>
-            </div>
 
-            <div class="feed-item clearfix">
+
+            <!-- <div class="feed-item clearfix">
               <div class="avatar pull-left text-center">
                 <div><img src="http://localhost/BBS/public/images/demo.jpg" style="width:50px;height:50px;" /></div>
               </div>
@@ -90,7 +64,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
 
           </div>
         </div>

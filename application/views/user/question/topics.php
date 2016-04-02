@@ -13,7 +13,19 @@
             <div class="topics-cat-main"></div>
             <div class="topics-cat-sub">
               <div class="general-list">
-                <div class="item">
+                <?php foreach($topic as $item):?>
+                  <div class="item">
+                    <div class="blk">
+                      <a href="#">
+                        <img src="http://localhost/BBS/public/images/demo.jpg" />
+                        <strong><?php echo $item->topic_title;?></strong>
+                      </a>
+                      <p><?php echo $item->topic_decs;?></p>
+                      <a href="#" class="follow"><span class="glyphicon glyphicon-plus"></span>关注</a>
+                    </div>
+                  </div>
+                <?php endforeach;?>
+                <!-- <div class="item even">
                   <div class="blk">
                     <a href="#">
                       <img src="http://localhost/BBS/public/images/demo.jpg" />
@@ -22,57 +34,7 @@
                     <p>游戏是一种基于物质满足之上的，在一种特定时间、空间范围内遵循某</p>
                     <a href="#" class="follow"><span class="glyphicon glyphicon-plus"></span>关注</a>
                   </div>
-                </div>
-                <div class="item even">
-                  <div class="blk">
-                    <a href="#">
-                      <img src="http://localhost/BBS/public/images/demo.jpg" />
-                      <strong>游戏</strong>
-                    </a>
-                    <p>游戏是一种基于物质满足之上的，在一种特定时间、空间范围内遵循某</p>
-                    <a href="#" class="follow"><span class="glyphicon glyphicon-plus"></span>关注</a>
-                  </div>
-                </div>
-                <div class="item even">
-                  <div class="blk">
-                    <a href="#">
-                      <img src="http://localhost/BBS/public/images/demo.jpg" />
-                      <strong>游戏</strong>
-                    </a>
-                    <p>游戏是一种基于物质满足之上的，在一种特定时间、空间范围内遵循某</p>
-                    <a href="#" class="follow"><span class="glyphicon glyphicon-plus"></span>关注</a>
-                  </div>
-                </div>
-                <div class="item even">
-                  <div class="blk">
-                    <a href="#">
-                      <img src="http://localhost/BBS/public/images/demo.jpg" />
-                      <strong>游戏</strong>
-                    </a>
-                    <p>游戏是一种基于物质满足之上的，在一种特定时间、空间范围内遵循某</p>
-                    <a href="#" class="follow"><span class="glyphicon glyphicon-plus"></span>关注</a>
-                  </div>
-                </div>
-                <div class="item even">
-                  <div class="blk">
-                    <a href="#">
-                      <img src="http://localhost/BBS/public/images/demo.jpg" />
-                      <strong>游戏</strong>
-                    </a>
-                    <p>游戏是一种基于物质满足之上的，在一种特定时间、空间范围内遵循某</p>
-                    <a href="#" class="follow"><span class="glyphicon glyphicon-plus"></span>关注</a>
-                  </div>
-                </div>
-                <div class="item even">
-                  <div class="blk">
-                    <a href="#">
-                      <img src="http://localhost/BBS/public/images/demo.jpg" />
-                      <strong>游戏</strong>
-                    </a>
-                    <p>游戏是一种基于物质满足之上的，在一种特定时间、空间范围内遵循某</p>
-                    <a href="#" class="follow"><span class="glyphicon glyphicon-plus"></span>关注</a>
-                  </div>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>

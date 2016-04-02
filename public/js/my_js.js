@@ -3,13 +3,17 @@ $(function () { $("[data-toggle='tooltip']").tooltip(); });
 $(document).ready(function(){
   show();
   function show(){
-    var text = $.trim($('.detail-answer').text());
-    var tmp_div = "<a href='javascript:void(0);' class='toggle-expand'>... 显示全部</a>";
-    if(text.length > 100){
-      $('.detail-answer').css('display','none');
-      $('.summary').text(text.substring(0 , 100));
-    }
-    $('.summary').append(tmp_div);
+    $('.detail-answer').each(function(){
+      var text = $.trim($(this).text());
+      var tmp_div = "<a href='javascript:void(0);' class='toggle-expand'>... 显示全部</a>";
+      if(text.length > 200){
+        $(this).css('display','none');
+        $(this).parent().children('.summary').text(text.substring(0 , 100));
+        $(this).parent().children('.summary').append(tmp_div);
+        // $('.summary').text(text.substring(0 , 100));
+        // $('.summary').append(tmp_div);
+      }
+    })
   }
 
   $('.toggle-expand').click(function (){
