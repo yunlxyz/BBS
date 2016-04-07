@@ -17,9 +17,10 @@ class Wrk_question extends CI_Model{
    */
   public function query_question($offset){
     $sql = 'SELECT
-              q.* , t.topic_title
+              q.* , t.topic_title , t.topic_avatar
             FROM
               wrk_question q INNER JOIN basic_topic t ON q.question_class = t.id
+            WHERE q.answer_count !=0
             ORDER BY q.question_time
             LIMIT ? , 10';
     $query = $this->db->query($sql , array($offset));
@@ -45,6 +46,13 @@ class Wrk_question extends CI_Model{
             FROM wrk_question q INNER JOIN basic_topic t ON q.question_class = t.id
             WHERE q.id = ?';
     $query = $this->db->query($sql , array($question_id));
+    return $query->result();
+  }
+
+  public function add_question_piblish($question_title , $question_decs , $question_type , $question_time , $questioner){
+    $sql = 'INSERT INTO wrk_question(question_title , question_desc , question_class , question_time , questioner)
+            VALUES(? , ? , ? , ? , ?)';
+    $query = $this->db->query($sql , array($question_title , $question_decs , $question_type , $question_time , $questioner));
     return $query->result();
   }
 }

@@ -12,17 +12,23 @@ class Index extends CI_Controller{
   function __construct(){
     parent::__construct();
     $this->load->helper('url');
+    $this->load->library('session');
   }
 
   /**
    * 首页渲染
    */
   public function index(){
-    $info['title'] = '首页 - 沙湖社区';
-    $this->load->view('user/template/header' , $info);
-    $result['data'] =$this->query_question();
-    $this->load->view('user/index' , $result);
-    $this->load->view('user/template/footer');
+    if (isset($_SESSION['account'])) {
+      $info['title'] = '首页 - 沙湖社区';
+      $this->load->view('user/template/header' , $info);
+      $result['data'] =$this->query_question();
+      $this->load->view('user/index' , $result);
+      $this->load->view('user/template/footer');
+    }else {
+      header('Location: index.php/User/Login/index');
+    }
+
   }
 
   /**
@@ -37,10 +43,10 @@ class Index extends CI_Controller{
     $i = 0;
     $result = $this->Wrk_question->query_question($offset);
     foreach ($result as $key => $value) {
-      $tmp_answer = $this->query_hottest_answer((int)$value->id);
-      $data[$i]['question'] = (array)$value; //问题数组
-      $data[$i]['answer'] = (array)$tmp_answer[0]; //回答列表
-      $i ++;
+        $tmp_answer = $this->query_hottest_answer((int)$value->id);
+        $data[$i]['question'] = (array)$value; //问题数组
+        $data[$i]['answer'] = (array)$tmp_answer[0]; //回答列表
+        $i ++;
     }
     return $data;
   }

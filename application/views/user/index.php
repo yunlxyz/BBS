@@ -10,7 +10,7 @@
             <?php foreach ($data as $item):?>
               <div class="feed-item clearfix">
                 <div class="avatar pull-left text-center">
-                  <div><img src="http://localhost/BBS/public/images/demo.jpg" style="width:50px;height:50px;" /></div>
+                  <div><img src="<?php echo $item['question']['topic_avatar'];?>" style="width:50px;height:50px;" /></div>
                 </div>
                 <div class="feed-main pull-left">
                   <div class="source">来自 <a href="#" data-placement="auto bottom" title="顶部的 Tooltip"><?php echo $item['question']['topic_title'];?></a></div>

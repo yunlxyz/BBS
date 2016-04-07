@@ -68,10 +68,34 @@ class Question extends CI_Controller{
     return $result;
   }
 
+  /**
+   * 查询所有的回答
+   * 根据ID查询当亲问题的所有回答
+   *
+   * @param  int    $question_id [description]
+   * @param  int    $offset      [description]
+   * @param  int    $rows        [description]
+   * @return array               [description]
+   */
   public function answer_all($question_id , $offset , $rows){
     $this->load->model('Wrk_answer');
     $result = $this->Wrk_answer->query_answer_all($question_id , $offset , $rows);
     return $result;
+  }
+
+  public function question_publish(){
+    Header("Access-Control-Allow-Origin: * ");
+    Header("Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE");
+    $question_title = $this->input->post('question_title');
+    $question_decs = $this->input->post('question_decs');
+    $question_= $this->input->post('question_type');
+    $question_type = 1;
+    $questioner = 'lvyun';
+    $question_time = date('Y-m-d H:m:s' , time());
+    $result = $this->Wrk_question->add_question_piblish($question_title , $question_decs , (int)$question_type , $question_time , $questioner);
+    $data['code'] = '10000';
+    $data['message'] = 'OK';
+    echo json_encode($result);
   }
 
 }

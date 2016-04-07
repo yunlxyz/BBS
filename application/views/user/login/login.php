@@ -9,7 +9,7 @@
     <link href="http://fonts.googleapis.com/css?family=Abel|Open+Sans:400,600" rel="stylesheet" />
     <style>
         html {
-            background: url(img/6133364748_89f2365922_o.jpg) no-repeat center center fixed;
+            /*background: url(img/6133364748_89f2365922_o.jpg) no-repeat center center fixed;*/
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -38,33 +38,42 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-md-6 col-md-offset-3 panel panel-default">
+            <div class="col-md-3 col-md-offset-4 panel panel-default">
                 <h1 class="margin-base-vertical">Have you ever seen the rain?</h1>
-                <!-- <p>
-                    Someone told me long ago there's a calm before the storm. I know, It's been comin for some time.
-                </p>
-                <p>
-                    When it's over, so they say, it'll rain a sunny day. I know,    Shinin down like water.
-                </p>
-                <p>
-                    I want to know, have you ever seen the rain?
-                </p> -->
-                <form class="margin-base-vertical">
-                    <p class="input-group">
-                        <span class="input-group-addon"><span class="icon-envelope"></span></span>
-                        <input type="text" class="form-control input-lg" name="email" placeholder="jonsnow@knowsnothi.ng" />
-                    </p>
-                    <!-- <p class="help-block text-center"><small>We won't send you spam. Unsubscribe at any time.</small></p> -->
-                    <p class="text-center">
-                        <button type="submit" class="btn btn-primary btn-lg">登录</button>
-                    </p>
-                    </span>
+                <form class="margin-base-vertical" id="myForm1">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">用户名</label>
+                    <input type="text" class="form-control" name="account" placeholder="请输入用户名">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">密码</label>
+                      <input type="password" class="form-control" name="password" placeholder="请输入密码">
+                  </div>
+                  <button type="submit" class="btn btn-default submit">登录</button>
                 </form>
-                <!-- <div class="margin-base-vertical">
-                    <small class="text-muted"><a href="http://www.flickr.com/photos/erwlas/6133364748/">Background picture by erwlas @flickr</a>. Used under <a href="http://creativecommons.org/licenses/by/2.0/deed.en">Creative Commons - Attribution</a>.</small>
-                </div> -->
             </div><!-- //main content -->
         </div><!-- //row -->
     </div> <!-- //container -->
 </body>
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="<?php echo base_url();?>public/js/jquery.form.js"></script>
+<script>
+$(document).ready(function() {
+  var options = {
+    url: '/BBS/index.php/user/Login/login' ,         // override for form's 'action' attribute
+    type: 'POST',        // 'get' or 'post', override for form's 'method' attribute
+    success: showResponse ,  // post-submit callback
+    // clearForm: true        // clear all form fields after successful submit
+  };
+  $('#myForm1').ajaxForm(options).submit(function (){return false;});
+  function showResponse(data){
+    var json = eval('('+data+')');
+    if (json.code == 10000) {
+      location.href = "/BBS/index.php";
+    }else if (json.code == '10001') {
+      alert("密码错误");
+    }
+  }
+});
+</script>
 </html>

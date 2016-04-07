@@ -63,7 +63,7 @@
                       <li><a href="/BBS/index.php/User/Mirror/index">我的主页</a></li>
                       <li><a href="#">设置</a></li>
                       <li role="separator" class="divider"></li>
-                      <li><a href="/BBS/index.php/User/Login/index">退出</a></li>
+                      <li><a href="/BBS/index.php/User/Login/loggout">退出</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -84,23 +84,47 @@
             <div class="modal-body">
               <form>
                 <div class="form-group">
-                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="你的问题">
+                  <input type="email" class="form-control" id="question" placeholder="你的问题">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">问题说明:</label>
-                  <textarea class="form-control" rows="3" placeholder="问题说明"></textarea>
+                  <textarea class="form-control" rows="3" placeholder="问题说明" id="question_decs"></textarea>
                   <!-- <input type="textarae" class="form-control" id="exampleInputPassword1" placeholder="问题说明"> -->
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">话题分类:</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="话题分类">
+                  <input type="email" class="form-control" id="question_type" placeholder="话题分类">
                 </div>
               </form>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-              <button type="button" class="btn btn-primary">发布</button>
+              <button type="button" class="btn btn-primary btn-release">发布</button>
             </div>
           </div>
         </div>
       </div>
+      <script>
+        $(document).ready(function(){
+          $('.btn-release').click(function(){
+            var question = $('#question').val();
+            var question_decs = $('#question_decs').val();
+            var question_type = $('#question_type').val();
+            $.ajax({
+              type: "POST",
+              url: "<?php echo base_url();?>index.php/User/Question/question_publish",
+              data: {
+                question_title: question,
+                question_decs: question_decs,
+                question_type: question_type
+              },
+              success:function(){
+                alert("OK");
+              },
+              error:function(xhr, type, exception){
+                alert(xhr.responseText, "Failed");
+              }
+            })
+          })
+        })
+      </script>
