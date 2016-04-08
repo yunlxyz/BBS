@@ -10,7 +10,7 @@
           </div>
           <?php foreach ($question as $item):?>
             <div class="logs-questions-item">
-              <h4><a href="#"><?php echo $item->question_title;?></a></h4>
+              <h4><a href="/BBS/index.php/User/Question/index/<?php echo $item->id;?>"><?php echo $item->question_title;?></a></h4>
               <div>
                 <a href="#"><?php echo $item->questioner;?></a><span class="zg-gray-normal"> 添加问题</span>
               </div>

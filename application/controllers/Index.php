@@ -21,6 +21,7 @@ class Index extends CI_Controller{
   public function index(){
     if (isset($_SESSION['account'])) {
       $info['title'] = '首页 - 沙湖社区';
+      $info['user'] = $_SESSION['account'];
       $this->load->view('user/template/header' , $info);
       $result['data'] =$this->query_question();
       $this->load->view('user/index' , $result);
@@ -28,7 +29,6 @@ class Index extends CI_Controller{
     }else {
       header('Location: index.php/User/Login/index');
     }
-
   }
 
   /**

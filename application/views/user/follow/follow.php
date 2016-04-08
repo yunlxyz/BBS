@@ -6,38 +6,28 @@
       <div class="col-md-9">
         <div class="row">
           <div class="col-md-12 clearfix">
-            <h4 class="follow-title">我关注的问题 (共七个)</h4>
-            <div class="follow-section-item">
-              <span class="follow-vote-count pull-left">
-                <div class="follow-vote-num">123</div>
-                <div class="follow-vote-type">浏览</div>
-              </span>
-              <div class="follow-section-main">
-                <h5 class="follow-question"><a href="#">去哪可以买到不贵又体面的家居装饰画呢？</a></h5>
-                <div class="follow-meta">
-                  <a href="#">取消关注</a>
-                  <span>199个回答</span>
-                  <span>1000个关注</span>
-                </div>
-              </div>
-            </div>
+            <h4 class="follow-title">我关注的问题 (共<?php echo $total;?>个)</h4>
 
-            <div class="follow-section-item">
-              <span class="follow-vote-count pull-left">
-                <div class="follow-vote-num">123</div>
-                <div class="follow-vote-type">浏览</div>
-              </span>
-              <div class="follow-section-main">
-                <h5 class="follow-question"><a href="#">去哪可以买到不贵又体面的家居装饰画呢？</a></h5>
-                <div class="follow-meta">
-                  <a href="#">取消关注</a>
-                  <span>199个回答</span>
-                  <span>1000个关注</span>
-                </div>
+            <?php foreach($list as $item):?>
+              <div class="follow-section-item">
+                <span class="follow-vote-count pull-left">
+                  <div class="follow-vote-num">123</div>
+                  <div class="follow-vote-type">浏览</div>
+                </span>
+                <?php foreach($item->follow_question as $question):?>
+                  <div class="follow-section-main">
+                    <h5 class="follow-question"><a href="/BBS/index.php/User/Question/index/<?php echo $question->id;?>"><?php echo $question->question_title;?></a></h5>
+                    <div class="follow-meta">
+                      <a href="#">取消关注</a>
+                      <span><?php echo $question->answer_count;?>个回答</span>
+                      <span><?php echo $question->follower_count;?>个关注</span>
+                    </div>
+                  </div>
+                <?php endforeach;?>
               </div>
-            </div>
+            <?php endforeach;?>
 
-            <div class="follow-section-item">
+            <!-- <div class="follow-section-item">
               <span class="follow-vote-count pull-left">
                 <div class="follow-vote-num">123</div>
                 <div class="follow-vote-type">浏览</div>
@@ -50,7 +40,7 @@
                   <span>1000个关注</span>
                 </div>
               </div>
-            </div>
+            </div> -->
 
           </div>
         </div>

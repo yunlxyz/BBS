@@ -15,7 +15,7 @@
                 <span class="label label-primary">标签5</span>
               </div>
               <div class="question-title clearfix">
-                <h4><?php echo $question[0]->question_title;?></h4>
+                <h4 id="question-title" data-qid="<?php echo $question[0]->id;?>"><?php echo $question[0]->question_title;?></h4>
                 <div class="question-info clearfix">
                   <span><?php echo $question[0]->questioner;?></span>
                   <div class="pull-right">提问于：<?php echo $question[0]->question_time;?></div>
@@ -58,13 +58,8 @@
               <div class="answer-editor-wrap">
                 <div class="answer-from">未闻花名</div>
                 <div id="summernote"></div>
-                <script>
-                  $(document).ready(function() {
-                      $('#summernote').summernote();
-                  });
-                </script>
                 <div class="answer-command text-right">
-                  <button type="button" class="btn btn-primary">发布</button>
+                  <button type="button" class="btn btn-primary submit">发布回答</button>
                 </div>
               </div>
             </div>
@@ -91,3 +86,4 @@
 </div>
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.js"></script>
+<script src="<?php echo base_url();?>public/js/upload.js"></script>

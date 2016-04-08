@@ -58,7 +58,7 @@
                     <button type="button" class="add-question" data-toggle="modal" data-target="#myModal">提问</button>
                   </li>
                   <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">未闻花名 <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $user;?> <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                       <li><a href="/BBS/index.php/User/Mirror/index">我的主页</a></li>
                       <li><a href="#">设置</a></li>

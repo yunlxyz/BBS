@@ -9,15 +9,21 @@ class News extends CI_Controller{
     parent::__construct();
     $this->load->helper('url');
     $this->load->model('Wrk_news');
+    $this->load->library('session');
   }
 
   public function index(){
-    $data['title'] = '发现,每天不一样的湖大 - 沙湖';
-    $this->load->view('user/template/header' , $data);
-    
-    $result['news'] = $this->news_latest();
-    $this->load->view('user/news/news' , $result);
-    $this->load->view('user/template/footer');
+    if (isset($_SESSION['account'])) {
+      $info['user'] = $_SESSION['account'];
+      $info['title'] = '发现,每天不一样的湖大 - 沙湖';
+      $this->load->view('user/template/header' , $info);
+
+      $result['news'] = $this->news_latest();
+      $this->load->view('user/news/news' , $result);
+      $this->load->view('user/template/footer');
+    }else {
+      header('Location: ../Login/index');
+    }
   }
 
   public function news_latest(){

@@ -16,6 +16,14 @@ class Basic_user extends CI_Model{
     $query = $this->db->query($sql , array($account));
     return $query;
   }
+
+  public function query_user_info($account){
+    $sql = 'SELECT *
+            FROM basic_user u
+            WHERE u.account = ?';
+    $query = $this->db->query($sql , array($account));
+    return $query->result();
+  }
 }
 
 ?>

@@ -13,6 +13,7 @@ class Question extends CI_Controller{
     parent::__construct();
     $this->load->helper('url');
     $this->load->model('Wrk_question');
+    $this->load->library('session');
   }
 
   /**
@@ -23,15 +24,20 @@ class Question extends CI_Controller{
    * @return array              [description]
    */
   public function index($question_id){
-    $tmp_result = $this->question_singal((int)$question_id);
-    $data['title'] = $tmp_result[0]->question_title.' - 沙湖';
-    $result['question'] = $tmp_result;
-    $offset = 0;
-    $rows = 15;
-    $result['answer'] = $this->answer_all($question_id , $offset , $rows);
-    $this->load->view('user/template/header' , $data);
-    $this->load->view('user/question/question' , $result);
-    $this->load->view('user/template/footer');
+    if (isset($_SESSION['account'])) {
+      $info['user'] = $_SESSION['account'];
+      $tmp_result = $this->question_singal((int)$question_id);
+      $info['title'] = $tmp_result[0]->question_title.' - 沙湖';
+      $result['question'] = $tmp_result;
+      $offset = 0;
+      $rows = 15;
+      $result['answer'] = $this->answer_all($question_id , $offset , $rows);
+      $this->load->view('user/template/header' , $info);
+      $this->load->view('user/question/question' , $result);
+      $this->load->view('user/template/footer');
+    }else {
+      header('Location: ../Login/index');
+    }
   }
 
   /**
@@ -40,11 +46,16 @@ class Question extends CI_Controller{
    * @return array [description]
    */
   public function index_all(){
-    $data['title'] = '所有问题 - 沙湖';
-    $this->load->view('user/template/header' , $data);
-    $result['question'] = $this->question_all();
-    $this->load->view('user/question/question_all' , $result);
-    $this->load->view('user/template/footer');
+    if (isset($_SESSION['account'])) {
+      $info['user'] = $_SESSION['account'];
+      $info['title'] = '所有问题 - 沙湖';
+      $this->load->view('user/template/header' , $info);
+      $result['question'] = $this->question_all();
+      $this->load->view('user/question/question_all' , $result);
+      $this->load->view('user/template/footer');
+    }else {
+      header('Location: ../Login/index');
+    }
   }
 
   /**
@@ -83,6 +94,11 @@ class Question extends CI_Controller{
     return $result;
   }
 
+  /**
+   * 问题发布
+   *
+   * @return [type] [description]
+   */
   public function question_publish(){
     Header("Access-Control-Allow-Origin: * ");
     Header("Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE");
@@ -96,6 +112,44 @@ class Question extends CI_Controller{
     $data['code'] = '10000';
     $data['message'] = 'OK';
     echo json_encode($result);
+  }
+
+
+  /**
+   * 图片上传功能
+   * 用户在回答问题时，需要上传图片功能，需要先将图片上传值服务器后返回图片地址
+   *
+   * @return [type] [description]
+   */
+  public function upload_image(){
+    $this->load->helper('directory');
+    // A list of permitted file extensions
+    $allowed = array('png', 'jpg', 'gif','zip');
+    if(isset($_FILES['file']) && $_FILES['file']['error'] == 0){
+        $extension = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
+        if(!in_array(strtolower($extension), $allowed)){
+            echo '{"status":"error"}';
+            exit;
+        }
+        if(move_uploaded_file($_FILES['file']['tmp_name'], BASEPATH.'../public/uploads/'.$_FILES['file']['name'])){
+            $tmp='uploads/'.$_FILES['file']['name'];
+            echo base_url().'public/uploads/'.$_FILES['file']['name'];
+            exit;
+        }
+    }
+    echo '{"status":"error"}';
+    exit;
+  }
+
+  public function publish_answer(){
+    $this->load->model('Wrk_answer');
+
+    $answer_decs = $this->input->post('code');
+    $question_id = $this->input->post('qid');
+    $answer_time = date('Y-m-d H:i:s' , time());
+    $answerer = $_SESSION['account'];
+
+    $result = $this->Wrk_answer->save_publish_answer($answer_decs , $answerer , $answer_time , $question_id);
   }
 
 }

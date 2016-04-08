@@ -29,7 +29,7 @@
                     <div class="summary"></div>
                     <div class="feed-meta answer-actions" data-resourceid="1">
                       <button type="button" class="btn btn-primary pull-right js-collapse"><span class="glyphicon glyphicon-menu-up"></span>收起</button>
-                      <a href="#"><span class="glyphicon glyphicon-plus feed-icon"></span>关注问题</a>
+                      <a href="javascript:void(0);" class="follow-link" data-qid="<?php echo $item['question']['id'];?>"><span class="glyphicon glyphicon-plus feed-icon"></span>关注问题</a>
                       <a href="#"><span class="glyphicon glyphicon-comment feed-icon"></span><?php echo $item['question']['answer_count'];?>回答</a>
                     </div>
                   </div>
@@ -81,3 +81,4 @@
   </div>
   <div class="col-md-1"></div>
 </div>
+<script src="<?php echo base_url();?>public/js/common.js"></script>
