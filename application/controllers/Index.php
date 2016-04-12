@@ -33,6 +33,7 @@ class Index extends CI_Controller{
 
   /**
    * 首页问题查询
+   * 首页问题显示，显示当前活跃的问题，以及当前问题中点赞数最多的回答
    *
    * @return array $data [description]
    */
@@ -41,11 +42,18 @@ class Index extends CI_Controller{
     $offset = 0;
     $data = array();
     $i = 0;
-    $result = $this->Wrk_question->query_question($offset);
+    $result = $this->Wrk_question->query_question($offset); //查询问题，每页显示15条
     foreach ($result as $key => $value) {
-        $tmp_answer = $this->query_hottest_answer((int)$value->id);
+        $hottest_answer = $this->query_hottest_answer((int)$value->id); //查询点赞数最多的回答，value->id 指问题ID
         $data[$i]['question'] = (array)$value; //问题数组
-        $data[$i]['answer'] = (array)$tmp_answer[0]; //回答列表
+        $data[$i]['answer'] = (array)$hottest_answer[0]; //回答列表
+        $data[$i]['like'] = $this->like_answer_people($hottest_answer[0]->id);
+        $tmp_count = $this->judge_follow_question((int)$value->id); //查询用户是否已经关注问题
+        if ($tmp_count > 0) { //标记用户是否已经关注问题
+          $data[$i]['mark'] = 1;  //用户已经关注问题
+        }else {
+          $data[$i]['mark'] = 0;  //用户没有关注问题
+        }
         $i ++;
     }
     return $data;
@@ -60,6 +68,28 @@ class Index extends CI_Controller{
   public function query_hottest_answer($question_id){
     $this->load->model('Wrk_answer');
     return $this->Wrk_answer->query_hottest_answer($question_id);
+  }
+
+  /**
+   * 判断用户是否关注了问题
+   * 如果用户关注了，则返回值大于0，如没有关注则等于0
+   *
+   * @param  int    $question_id [description]
+   * @return int                 [description]
+   */
+  public function judge_follow_question($question_id){
+    $this->load->model('Wrk_question_follow');
+    $follower = $_SESSION['account'];
+    $result = $this->Wrk_question_follow->query_judge_follow_question($question_id , $follower);
+    return $result;
+  }
+
+  public function like_answer_people($answer_id){
+    $this->load->model('Wrk_like');
+    $result = $this->Wrk_like->query_like_answwer_people($answer_id);
+    $result['like'] = $result['like'];
+    $result['total'] = $result['total'];
+    return $result;
   }
 }
 

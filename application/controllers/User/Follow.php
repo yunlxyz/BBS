@@ -47,17 +47,41 @@ class Follow extends CI_Controller{
     return $result;
   }
 
+  /**
+   * 用户关注问题操作
+   * 用户点击按钮后通过ajax调用该方法
+   * 关注成功返回20000，失败返回20001
+   *
+   * @return json [description]
+   */
   public function follow_question(){
     $follow_question = $this->input->post('question_id');
     $follower = $_SESSION['account'];
     $follow_time = date('Y-m-d H:i:s' , time());
     $result = $this->Wrk_question_follow->save_follow_question($follower , $follow_time , $follow_question);
-    $data['code'] = 20000; //关注成功
+    if($result > 0){
+      $data['code'] = 20000; //关注成功
+    }else {
+      $data['code'] = 20001; //关注失败
+    }
     echo json_encode($data);
   }
 
+  /**
+   * 用户取消关注问题
+   *
+   * @return json [description]
+   */
   public function unfollow_question(){
-
+    $follow_question = $this->input->post('question_id');
+    $follower = $_SESSION['account'];
+    $result = $this->Wrk_question_follow->delete_follow_question($follower , (int)$follow_question);
+    if($result > 0){
+      $data['code'] = 20000; //取关成功
+    }else {
+      $data['code'] = 20001; //取关失败
+    }
+    echo json_encode($data);
   }
 }
 
