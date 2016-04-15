@@ -449,7 +449,7 @@ h4{
 .follow-vote-type{
   font-size: 12px;
   font-weight: 400;
-  line-height: 1;
+  line-height: 1qia
 }
 .follow-section-main{
   margin-left: 70px;
@@ -459,4 +459,13 @@ h4{
   color: #999;
   font-size: 12px;
   font-weight: 400;
+}
+
+/* lost_found */
+.goods-item{
+  border-top: 1px solid #ccc;
+  padding: 10px 5px;
+}
+.goods-uper{
+  color: #999;
 }

@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title><?php echo $title;?></title>
-    <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo base_url();?>public/css/myCss.css" rel="stylesheet">
-    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
-    <script src="<?php echo base_url();?>public/js/bootstrap.min.js"></script>
-    <script src="<?php echo base_url();?>public/js/my_js.js"></script>
+    <link href="/BBS/public/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/BBS/public/css/myCss.css" rel="stylesheet">
+    <script src="/BBS/public/bootstrap/js/jquery.min.js"></script>
+    <script src="/BBS/public/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/BBS/public/js/my_js.js"></script>
   </head>
   <body>
     <div class="container-fluid">
@@ -43,7 +43,7 @@
                       <li role="separator" class="divider"></li>
                       <li><a href="#">扩展人脉</a></li>
                       <li role="separator" class="divider"></li>
-                      <li><a href="#">失物招领</a></li>
+                      <li><a href="/BBS/index.php/User/Lost/index">失物招领</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -112,7 +112,7 @@
             var question_type = $('#question_type').val();
             $.ajax({
               type: "POST",
-              url: "<?php echo base_url();?>index.php/User/Question/question_publish",
+              url: "/BBS/index.php/User/Question/question_publish",
               data: {
                 question_title: question,
                 question_decs: question_decs,

@@ -85,5 +85,6 @@
   <div class="col-md-1"></div>
 </div>
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.css" rel="stylesheet">
+<!-- <link href="/BBS/public/bootstrap/css/summernote.css" rel="stylesheet"> -->
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.js"></script>
-<script src="<?php echo base_url();?>public/js/upload.js"></script>
+<script src="/BBS/public/js/upload.js"></script>
