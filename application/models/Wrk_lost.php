@@ -17,6 +17,13 @@ class Wrk_lost extends CI_Model{
     $query = $this->db->query($sql , array());
     return $query->result();
   }
+
+  public function save_new_lost_info($lost_goods , $lost_address , $lost_time , $contact , $publish_time , $type="丢失"){
+    $sql = 'INSERT INTO wrk_lost(lost_goods , pick_up_time , pick_up_address , contact_info , publish_time , type , status)
+            VALUES(? , ? , ? , ? , ? , ? , 0)';
+    $query = $this->db->query($sql , array($lost_goods ,$lost_time , $lost_address , $contact , $publish_time , $type));
+    return $query;
+  }
 }
 
 ?>

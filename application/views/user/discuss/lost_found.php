@@ -43,60 +43,121 @@
       </div>
       <div class="col-md-3">
         <ul class="list-group side-nav-group">
-          <li class="list-group-item"><span class="glyphicon glyphicon-list-alt"></span><a href="#" data-toggle="modal" data-target=".bs-example-modal-sm">发布丢失信息</a></li>
-          <li class="list-group-item"><span class="glyphicon glyphicon-th-large"></span><a href="#">发布认领信息</a></li>
-          <!-- <li class="list-group-item"><span class="glyphicon glyphicon-star-empty"></span><a href="#">我的收藏</a></li> -->
-          <!-- <li class="list-group-item"><span class="glyphicon glyphicon-heart"></span><a href="#">我关注的问题</a></li> -->
+          <li class="list-group-item"><span class="glyphicon glyphicon-list-alt"></span><a href="javascript:void(0);" data-toggle="modal" data-target="#lost-goods-model">发布丢失信息</a></li>
+          <li class="list-group-item"><span class="glyphicon glyphicon-th-large"></span><a href="javascript:void(0);" data-toggle="modal" data-target="#found-goods-model">发布认领信息</a></li>
         </ul>
-
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
-
-        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal fade bs-example-modal-sm" id="lost-goods-model" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
           <div class="modal-dialog modal-sm">
             <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">新建丢失信息</h4>
-              </div>
-              <div class="modal-body">
-                <form>
+              <form id="lost-form">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="exampleModalLabel">新建丢失信息</h4>
+                </div>
+                <div class="modal-body">
                   <div class="form-group">
                     <label for="recipient-name" class="control-label">具体描述:</label>
-                    <textarea class="form-control" id="lost-goods" rows＝"10"></textarea>
+                    <textarea class="form-control" name="lost-goods" rows＝"10"></textarea>
                   </div>
                   <div class="form-group">
                     <label for="message-text" class="control-label">丢失地点:</label>
-                    <input type="text" class="form-control" id="recipient-name">
+                    <input type="text" class="form-control" name="lost-address">
                   </div>
                   <div class="form-group">
                     <label for="message-text" class="control-label">丢失时间:</label>
                     <div class="input-append date form_datetime" data-date="">
-                      <input class="form-control" size="25" type="text" value="">
+                      <input type="text" class="form-control" name="lost-time" size="25">
                       <span class="add-on"><i class="icon-remove"></i></span>
                       <span class="add-on"><i class="icon-th"></i></span>
                     </div>
                   </div>
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary">确认发布</button>
-              </div>
+                  <div class="form-group">
+                    <label for="message-text" class="control-label">联系方式:</label>
+                    <input type="text" class="form-control" name="contact">
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn btn-default" type="button"  data-dismiss="modal">关闭</button>
+                  <button class="btn btn-primary" type="submit">确认发布</button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
 
+        <div class="modal fade bs-example-modal-sm" id="found-goods-model" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <form id="lost-form">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="exampleModalLabel">认领信息</h4>
+                </div>
+                <div class="modal-body">
+                  <div class="form-group">
+                    <label for="recipient-name" class="control-label">具体描述:</label>
+                    <textarea class="form-control" name="lost-goods" rows＝"10"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="message-text" class="control-label">拾取地点:</label>
+                    <input type="text" class="form-control" name="lost-address">
+                  </div>
+                  <div class="form-group">
+                    <label for="message-text" class="control-label">拾取时间:</label>
+                    <div class="input-append date form_datetime" data-date="">
+                      <input type="text" class="form-control" name="lost-time" size="25">
+                      <span class="add-on"><i class="icon-remove"></i></span>
+                      <span class="add-on"><i class="icon-th"></i></span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="message-text" class="control-label">联系方式:</label>
+                    <input type="text" class="form-control" name="contact">
+                  </div>
+                  <div class="form-group">
+                    <label for="message-text" class="control-label">地址:</label>
+                    <input type="text" class="form-control" name="contact">
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn btn-default" type="button"  data-dismiss="modal">关闭</button>
+                  <button class="btn btn-primary" type="submit">确认发布</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
   <div class="col-md-1"></div>
 </div>
+<script src="/BBS/public/bootstrap/js/jquery.form.js"></script>
 <script type="text/javascript">
-    $(".form_datetime").datetimepicker({
-        format: "yyyy-mm-dd hh:ii",
-        showMeridian: true,
-        autoclose: true,
-        todayBtn: true,
-        lang:'ch'
-    });
+  $(".form_datetime").datetimepicker({
+      format: "yyyy-mm-dd hh:ii",
+      showMeridian: true,
+      autoclose: true,
+      todayBtn: true,
+      lang:'ch'
+  });
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+  var options = {
+    url: '/BBS/index.php/user/Lost/new_lost_info' ,         // override for form's 'action' attribute
+    type: 'POST',        // 'get' or 'post', override for form's 'method' attribute
+    success: showResponse ,  // post-submit callback
+    // clearForm: true        // clear all form fields after successful submit
+  };
+  $('#lost-form').ajaxForm(options).submit(function (){return false;});
+  function showResponse(data){
+    var json = eval('('+data+')');
+    if (json.code == 10000) {
+      $('#lost-goods-model').modal('hide');
+    }else if (json.code == '10001') {
+      alert("发布失败");
+    }
+  }
+});
 </script>

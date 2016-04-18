@@ -107,7 +107,7 @@ class Question extends CI_Controller{
     $question_= $this->input->post('question_type');
     $question_type = 1;
     $questioner = 'lvyun';
-    $question_time = date('Y-m-d H:m:s' , time());
+    $question_time = date('Y-m-d H:i:s' , time());
     $result = $this->Wrk_question->add_question_piblish($question_title , $question_decs , (int)$question_type , $question_time , $questioner);
     $data['code'] = '10000';
     $data['message'] = 'OK';

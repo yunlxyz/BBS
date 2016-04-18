@@ -55,8 +55,8 @@
         </div><!-- //row -->
     </div> <!-- //container -->
 </body>
-<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
-<script src="<?php echo base_url();?>public/js/jquery.form.js"></script>
+<script src="/BBS/public/bootstrap/js/jquery.min.js"></script>
+<script src="/BBS/public/bootstrap/js/jquery.form.js"></script>
 <script>
 $(document).ready(function() {
   var options = {
