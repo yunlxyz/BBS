@@ -115,7 +115,7 @@
                     <input type="text" class="form-control" name="contact">
                   </div>
                   <div class="form-group">
-                    <label for="message-text" class="control-label">地址:</label>
+                    <label for="message-text" class="control-label">联系  地址:</label>
                     <input type="text" class="form-control" name="contact">
                   </div>
                 </div>

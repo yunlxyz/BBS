@@ -36,6 +36,12 @@ class Lost extends CI_Controller{
     return $result;
   }
 
+  /**
+   * 新建丢失信息
+   * 用户创建丢失物品信息
+   *
+   * @return [type] [description]
+   */
   public function new_lost_info(){
     $lost_goods = $this->input->post('lost-goods');
     $lost_address = $this->input->post('lost-address');

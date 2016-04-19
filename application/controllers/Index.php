@@ -84,6 +84,13 @@ class Index extends CI_Controller{
     return $result;
   }
 
+  /**
+   * 查看当前答案点赞的人数
+   * 根据答案ID查询所有点赞人数
+   *
+   * @param  [type] $answer_id [description]
+   * @return [type]            [description]
+   */
   public function like_answer_people($answer_id){
     $this->load->model('Wrk_like');
     $result = $this->Wrk_like->query_like_answwer_people($answer_id);

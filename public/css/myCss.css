@@ -44,6 +44,7 @@ h4{
 }
 .answer-auther-info{
   border-bottom: 1px solid #eee;
+  padding-bottom: 3px;
 }
 .zantong{
   font-size: 12px;
@@ -468,4 +469,18 @@ h4{
 }
 .goods-uper{
   color: #999;
+}
+.goods-contents{
+  padding: 10px 0 0 0;
+}
+
+
+.sports-time{
+  display: inline;
+}
+.sports-count{
+  color: #999;
+}
+.sports-details{
+  padding: 10px 0;
 }
