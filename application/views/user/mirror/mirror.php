@@ -73,7 +73,7 @@
                     <span class="glyphicon glyphicon-education"></span>
                     <!-- 显示用户信息 -->
                     <span class="info-wrap">
-                      <span><?php echo $item->major_id;?></span>
+                      <span><?php echo $item->major;?></span>
                       <a href="javascript:void(0);" style="display:none;"><span class="glyphicon glyphicon-pencil"></span>修改</a>
                     </span>
                     <span class="edit-wrap" style="display:none;">

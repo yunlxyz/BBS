@@ -75,8 +75,8 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '127.0.0.1',
-	'username' => 'root',
+	'hostname' => 'yunlxyzbbs.mysql.rds.aliyuncs.com',
+	'username' => 'yunlxyz',
 	'password' => 'firely0506',
 	'database' => 'BBS',
 	'dbdriver' => 'mysqli',
