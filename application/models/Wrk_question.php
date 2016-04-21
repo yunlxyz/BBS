@@ -53,7 +53,7 @@ class Wrk_question extends CI_Model{
     $sql = 'INSERT INTO wrk_question(question_title , question_desc , question_class , question_time , questioner)
             VALUES(? , ? , ? , ? , ?)';
     $query = $this->db->query($sql , array($question_title , $question_decs , $question_type , $question_time , $questioner));
-    return $query->result();
+    return $query;
   }
 }
 

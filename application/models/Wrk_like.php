@@ -20,6 +20,13 @@ class Wrk_like extends CI_Model{
     $result['total'] = $count_query->result();
     return $result;
   }
+
+  public function save_like($answer_id , $liker , $like_time){
+    $sql = 'INSERT INTO wrk_like (answer_id , liker , like_time)
+            VALUES(? , ? , ?)';
+    $query = $this->db->query($sql , array($answer_id , $liker , $like_time));
+    return $query;
+  }
 }
 
 ?>

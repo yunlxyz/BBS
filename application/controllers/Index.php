@@ -13,6 +13,7 @@ class Index extends CI_Controller{
     parent::__construct();
     $this->load->helper('url');
     $this->load->library('session');
+    $this->load->model('Wrk_like');
   }
 
   /**
@@ -31,15 +32,22 @@ class Index extends CI_Controller{
     }
   }
 
+  public function get_question_list(){
+    $page = $this->input->get('page');
+    $result = $this->query_question($page);
+    // var_dump($result);
+    // var_dump($page);
+    echo json_encode($result);
+  }
   /**
    * 首页问题查询
    * 首页问题显示，显示当前活跃的问题，以及当前问题中点赞数最多的回答
    *
    * @return array $data [description]
    */
-  public function query_question(){
+  public function query_question($page = 1){
     $this->load->model('Wrk_question');
-    $offset = 0;
+    $offset = ($page - 1)*10;
     $data = array();
     $i = 0;
     $result = $this->Wrk_question->query_question($offset); //查询问题，每页显示15条
@@ -92,11 +100,27 @@ class Index extends CI_Controller{
    * @return [type]            [description]
    */
   public function like_answer_people($answer_id){
-    $this->load->model('Wrk_like');
     $result = $this->Wrk_like->query_like_answwer_people($answer_id);
     $result['like'] = $result['like'];
     $result['total'] = $result['total'];
     return $result;
+  }
+
+  /**
+   * 回答点赞
+   *
+   */
+  public function add_like(){
+    $answer_id = $this->input->post('answer_id');
+    $liker = $_SESSION['account'];
+    $like_time = date('Y-m-d H:i:s' , time());
+    $result = $this->Wrk_like->save_like($answer_id , $liker , $like_time);
+    if ($result) {
+      $data['code'] = 10000;
+    }else {
+      $data['code'] = 10001;
+    }
+    echo json_encode($data);
   }
 }
 

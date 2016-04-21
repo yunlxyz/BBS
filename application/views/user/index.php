@@ -5,7 +5,7 @@
     <div class="row">
       <div class="col-md-9">
         <div class="row">
-          <div class="col-md-12 clearfix">
+          <div class="col-md-12 clearfix" id="content">
             <h4 class="home-title"><span class="glyphicon glyphicon-th-list"></span>最新帖子</h4>
             <?php foreach ($data as $item):?>
               <div class="feed-item clearfix">
@@ -50,6 +50,7 @@
                 </div>
               </div>
             <?php endforeach;?>
+            <a class="btn btn-default btn-block" id="next" href="/BBS/index.php/Index/get_question_list/?page=1" role="button">点击加载更多。。。</a>
 
 
             <!-- <div class="feed-item clearfix">
@@ -96,3 +97,60 @@
   <div class="col-md-1"></div>
 </div>
 <script src="<?php echo base_url();?>public/js/common.js"></script>
+<script src="<?php echo base_url();?>public/js/jquery.infinitescroll.js"></script>
+<script>
+	$('#content').infinitescroll({
+    loading: {
+      finished: undefined,
+      finishedMsg: '<a class="btn btn-default btn-block" href="javascript:;" role="button">问题已经全部加载完了</a>',
+      img: null,
+      msg: null,
+      msgText: '<a class="btn btn-default btn-block" href="javascript:;" role="button">正在加载更多数据，请稍后。。。</a>',
+      selector: null,
+      speed: 'slow',
+      start: undefined
+    },
+		// callback		: function () { console.log('using opts.callback'); },
+		navSelector  	: "#next",
+		nextSelector 	: "#next",
+		itemSelector 	: "#content",
+		debug		 	: false,
+		dataType	 	: 'json',
+		// behavior		: 'twitter',
+		appendCallback	: false, // USE FOR PREPENDING
+		// pathParse     	: function( pathStr, nextPage ){ return pathStr.replace('2', nextPage ); }
+    },
+    function( response ) {
+      var html ='';
+      $.each(response , function(n , value){
+        html += '<div class="feed-item clearfix">'+
+                  '<div class="avatar pull-left text-center">'+
+                    '<div><img src="'+value["question"]["topic_avatar"]+'" style="width:50px;height:50px;" /></div>'+
+                  '</div>'+
+                  '<div class="feed-main pull-left">'+
+                    '<div class="source">来自 <a href="#">'+value["question"]["topic_title"]+'</a></div>'+
+                    '<div class="content clearfix">'+
+                      '<h5><a class="question-link" href="/BBS/index.php/User/Question/index/'+value["question"]["id"]+'">'+value["question"]["question_title"]+'</a></h5>'+
+                      '<div class="answer-auther-info clearfix">'+
+                        '<a href="#" class="avatar-link pull-right"><img src="'+value["answer"]["user_avatar"]+'" /></a>'+
+                        '<a href="#" class="author-link">'+value["answer"]["answerer"]+'</a><span class="bio">,'+value["answer"]["introduction"]+'</span>'+
+                      '</div>'+
+                      '<div class="detail-answer">'+
+                        '<p>'+value["question"]["question_desc"]+'</p>'+
+                        '<div class="zantong">'+
+                          '<a href="#"><span class="glyphicon glyphicon-thumbs-up"><span></a>、ABC等10人赞同'+
+                        '</div>'+
+                      '</div>'+
+                      '<div class="summary"></div>'+
+                      '<div class="feed-meta answer-actions" data-resourceid="1">'+
+                        '<button type="button" class="btn btn-primary pull-right js-collapse"><span class="glyphicon glyphicon-menu-up"></span>收起</button>'+
+                        '<a href="#"><span class="glyphicon glyphicon-plus feed-icon"></span>关注问题</a>'+
+                        '<a href="/BBS/index.php/User/Question/index/'+value["question"]["id"]+'"><span class="glyphicon glyphicon-comment feed-icon"></span>'+value["question"]["answer_count"]+'回答</a>'+
+                      '</div>'+
+                    '</div>'+
+                  '</div>'+
+                '</div>';
+      });
+      $('#content').append(html);
+		});
+</script>

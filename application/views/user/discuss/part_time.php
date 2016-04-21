@@ -85,6 +85,7 @@
   </div>
   <div class="col-md-1"></div>
 </div>
+<script src="/BBS/public/bootstrap/js/jquery.form.js"></script>
 <script type="text/javascript">
   $(".form_datetime").datetimepicker({
       format: "yyyy-mm-dd hh:ii",

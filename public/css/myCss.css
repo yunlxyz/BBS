@@ -106,6 +106,7 @@ h4{
   display: inline;
 }
 
+
 /**
  * header
  */
@@ -385,14 +386,17 @@ h4{
 }
 .header-user-describe{
   padding: 0 30px;
+  display: block;
+    /*width: 80%;*/
 }
 .editable-group{
   padding: 3px 0;
 }
+
 .editable-group span{
-  padding-right: 10px;
+  /*padding-right: 10px;*/
   color: #666;
-  opacity: 0.3;
+  /*opacity: 0.3;*/
 }
 .info-body , .profile-section-wrap{
   border: 1px solid #eee;

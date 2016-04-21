@@ -10,6 +10,7 @@
     <link href="/BBS/public/css/myCss.css" rel="stylesheet">
     <script src="/BBS/public/bootstrap/js/jquery.min.js"></script>
     <script src="/BBS/public/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/BBS/public/bootstrap/js/jquery.form.js"></script>
     <script src="/BBS/public/js/my_js.js"></script>
   </head>
   <body>
@@ -34,14 +35,14 @@
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                   <li class="active"><a href="/BBS/index.php">首页 <span class="sr-only">(current)</span></a></li>
-                  <li><a href="/BBS/index.php/User/News/index">发现 </a></li>
+                  <li><a href="/BBS/index.php/User/News/index">资讯 </a></li>
                   <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">分类讨论 <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                       <li><a href="/BBS/index.php/User/Sports/index">一起运动 </a></li>
                       <li><a href="#">我爱学习 </a></li>
                       <li role="separator" class="divider"></li>
-                      <li><a href="#">兼职信息 </a></li>
+                      <li><a href="/BBS/index.php/User/Part_time/index">兼职信息 </a></li>
                       <li role="separator" class="divider"></li>
                       <li><a href="/BBS/index.php/User/Lost/index">失物招领</a></li>
                     </ul>
@@ -81,50 +82,49 @@
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               <h4 class="modal-title" id="myModalLabel">提问</h4>
             </div>
-            <div class="modal-body">
-              <form>
+            <form id="question-form">
+              <div class="modal-body">
                 <div class="form-group">
-                  <input type="email" class="form-control" id="question" placeholder="你的问题">
+                  <input type="text" class="form-control" name="question_title" placeholder="你的问题">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">问题说明:</label>
-                  <textarea class="form-control" rows="3" placeholder="问题说明" id="question_decs"></textarea>
-                  <!-- <input type="textarae" class="form-control" id="exampleInputPassword1" placeholder="问题说明"> -->
+                  <textarea class="form-control" rows="3" placeholder="问题说明" name="question_decs"></textarea>
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">话题分类:</label>
-                  <input type="email" class="form-control" id="question_type" placeholder="话题分类">
+                  <select class="form-control" name="question_type">
+                    <option value ="1">心理</option>
+                    <option value ="2">游戏</option>
+                    <option value="4">计算机</option>
+                    <option value="6">动漫</option>
+                  </select>
                 </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-              <button type="button" class="btn btn-primary btn-release">发布</button>
-            </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="submit" class="btn btn-primary">发布</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
-      <script>
-        $(document).ready(function(){
-          $('.btn-release').click(function(){
-            var question = $('#question').val();
-            var question_decs = $('#question_decs').val();
-            var question_type = $('#question_type').val();
-            $.ajax({
-              type: "POST",
-              url: "/BBS/index.php/User/Question/question_publish",
-              data: {
-                question_title: question,
-                question_decs: question_decs,
-                question_type: question_type
-              },
-              success:function(){
-                alert("OK");
-              },
-              error:function(xhr, type, exception){
-                alert(xhr.responseText, "Failed");
-              }
-            })
-          })
-        })
+      <script type="text/javascript">
+        $(document).ready(function() {
+          var options = {
+            url: '/BBS/index.php/User/Question/question_publish' ,         // override for form's 'action' attribute
+            type: 'POST',        // 'get' or 'post', override for form's 'method' attribute
+            success: showResponse ,  // post-submit callback
+            clearForm: true        // clear all form fields after successful submit
+          };
+          $('#question-form').ajaxForm(options).submit(function (){return false;});
+          function showResponse(data){
+            var json = eval('('+data+')');
+            if (json.code == 10000) {
+              $('#myModal').modal('hide');
+            }else if (json.code == '10001') {
+              alert("发布失败");
+            }
+          }
+        });
       </script>

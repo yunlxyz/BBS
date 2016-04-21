@@ -104,14 +104,18 @@ class Question extends CI_Controller{
     Header("Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE");
     $question_title = $this->input->post('question_title');
     $question_decs = $this->input->post('question_decs');
-    $question_= $this->input->post('question_type');
-    $question_type = 1;
-    $questioner = 'lvyun';
+    $question_type= $this->input->post('question_type');
+    // $question_type = 1;
+    $questioner = $_SESSION['account'];
     $question_time = date('Y-m-d H:i:s' , time());
+    $data = array();
     $result = $this->Wrk_question->add_question_piblish($question_title , $question_decs , (int)$question_type , $question_time , $questioner);
-    $data['code'] = '10000';
-    $data['message'] = 'OK';
-    echo json_encode($result);
+    if ($result) {
+      $data['code'] = '10000';
+    }else {
+      $data['code'] = '10001';
+    }
+    echo json_encode($data);
   }
 
 
@@ -141,6 +145,12 @@ class Question extends CI_Controller{
     exit;
   }
 
+
+  /**
+   * 回答问题
+   *
+   * @return [type] [description]
+   */
   public function publish_answer(){
     $this->load->model('Wrk_answer');
 
