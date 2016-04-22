@@ -48,7 +48,7 @@ $(document).ready(function(){
       }
     })
   });
-  
+
   $(document).on('click' , '.up' , function(){
     var answer_id = $(this).data('aid');
     var mythis = $(this);

@@ -11,94 +11,68 @@
       <div class="col-md-9">
         <div class="row">
           <div class="col-md-12 clearfix">
-            <h4>兼职信息</h4>
+            <h4>最新兼职信息</h4>
             <div class="part-time">
-              <div class="part-item">
-                <div class="part-title">
-                  <span class="label label-primary">兼职</span>
-                  <a href="javascript:;" class="expend" data-part="1">招募 第11期北大－云大－台大学生社会服务计划</a>
+              <?php foreach($list as $item):?>
+                <div class="part-item">
+                  <div class="part-title">
+                    <span class="label label-primary">兼职</span>
+                    <a href="javascript:;" class="expend" data-pid="<?php echo $item->id;?>"><?php echo $item->title;?></a>
+                  </div>
+                  <div class="part-detail-time">
+                    <div><span>发布时间：</span><?php echo $item->publish_time;?></div>
+                  </div>
                 </div>
-                <div class="part-detail-time">
-                  <div><span>时间：</span>xxxx-xx-xx xx:xx:xx</div>
-                </div>
-              </div>
-              <div class="part-item">
-                <div class="part-title">
-                  <span class="label label-primary">兼职</span>
-                  <a href="javascript:;">招募 第11期北大－云大－台大学生社会服务计划</a>
-                </div>
-                <div class="part-detail-time">
-                  <div><span>时间：</span>xxxx-xx-xx xx:xx:xx</div>
-                </div>
-              </div>
-              <div class="part-item">
-                <div class="part-title">
-                  <span class="label label-primary">兼职</span>
-                  <a href="#">招募 第11期北大－云大－台大学生社会服务计划</a>
-                </div>
-                <div class="part-detail-time">
-                  <div><span>时间：</span>xxxx-xx-xx xx:xx:xx</div>
-                </div>
-              </div>
-            </div>
+              <?php endforeach;?>
 
-            <!-- Modal -->
-            <div class="modal fade" id="detail-part" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                  </div>
-                  <div class="modal-body">
-                    ...
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                  </div>
+              <!-- <div class="part-item">
+                <div class="part-title">
+                  <span class="label label-primary">兼职</span>
+                  <a href="javascript:;" class="expend">招募 第11期北大－云大－台大学生社会服务计划</a>
                 </div>
-              </div>
-            </div>
+                <div class="part-detail-time">
+                  <div><span>时间：</span>xxxx-xx-xx xx:xx:xx</div>
+                </div>
+              </div> -->
 
+            </div>
           </div>
         </div>
       </div>
       <div class="col-md-3">
         <ul class="list-group side-nav-group">
-          <li class="list-group-item"><span class="glyphicon glyphicon-list-alt"></span><a href="javascript:void(0);" data-toggle="modal" data-target="#sports-model">发布运动信息</a></li>
+          <li class="list-group-item"><span class="glyphicon glyphicon-list-alt"></span><a href="javascript:void(0);" data-toggle="modal" data-target="#part-model">发布兼职信息</a></li>
         </ul>
-        <div class="modal fade bs-example-modal-sm" id="sports-model" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal fade bs-example-modal-sm" id="part-model" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
           <div class="modal-dialog modal-sm">
             <div class="modal-content">
-              <form id="sports-form">
+              <form id="part-form">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="exampleModalLabel">运动信息</h4>
+                  <h4 class="modal-title" id="exampleModalLabel">招聘信息</h4>
                 </div>
                 <div class="modal-body">
                   <div class="form-group">
-                    <label for="recipient-name" class="control-label">具体描述:</label>
-                    <textarea class="form-control" name="contacts" rows＝"10"></textarea>
+                    <label for="recipient-name" class="control-label">标题:</label>
+                    <textarea class="form-control" name="title" rows＝"10"></textarea>
                   </div>
                   <div class="form-group">
-                    <label for="recipient-name" class="control-label">项目:</label>
-                    <select class="form-control" name="sports_type">
-                      <option>篮球</option>
-                      <option>羽毛球</option>
-                      <option>跑步</option>
-                      <option>足球</option>
-                      <option>乒乓球</option>
-                    </select>
+                    <label for="recipient-name" class="control-label">时间:</label>
+                    <input type="text" class="form-control" name="time">
                   </div>
                   <div class="form-group">
-                    <label for="message-text" class="control-label">时间:</label>
-                    <div class="input-append date form_datetime" data-date="">
-                      <input type="text" class="form-control" name="sports_time" size="25">
-                      <span class="add-on"><i class="icon-remove"></i></span>
-                      <span class="add-on"><i class="icon-th"></i></span>
-                    </div>
+                    <label for="message-text" class="control-label">报名方式:</label>
+                    <input type="text" class="form-control" name="application">
                   </div>
+                  <div class="form-group">
+                    <label for="message-text" class="control-label">联系方式:</label>
+                    <input type="text" class="form-control" name="contact_link">
+                  </div>
+                  <div class="form-group">
+                    <label for="message-text" class="control-label">详细描述:</label>
+                    <textarea class="form-control" name="contents" rows＝"10"></textarea>
+                  </div>
+
                 </div>
                 <div class="modal-footer">
                   <button class="btn btn-default" type="button"  data-dismiss="modal">关闭</button>
@@ -113,6 +87,29 @@
   </div>
   <div class="col-md-1"></div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="detail-part" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title part-title" id="myModalLabel"></h4>
+      </div>
+      <div class="modal-body">
+        <div><h5>时间:</h5><span class="part-time"></span></div>
+        <div><h5>报名方式:</h5><span class="part-application"></span></div>
+        <div><h5>联系方式:</h5><span class="part-contact-info"></span></div>
+        <hr/>
+        <div><h5>具体内容:</h5><p class="part-contents"></p></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script src="/BBS/public/bootstrap/js/jquery.form.js"></script>
 <script type="text/javascript">
   $(".form_datetime").datetimepicker({
@@ -126,21 +123,40 @@
 <script type="text/javascript">
 $(document).ready(function() {
   $('.expend').click(function(){
-    alert($(this).data('part'));
-    $('#detail-part').modal();
+    var pid = $(this).data('pid');
+    $.ajax({
+      type: "POST",
+      url: "/BBS/index.php/User/Part_time/get_detail_part",
+      data: {pid: pid} ,
+      success: function(data){
+        var json = eval('('+data+')');
+        if(json.code == "10000"){
+          $.each(json.info , function(n , item){
+            $('#detail-part .part-title').text(item['title']);
+            $('#detail-part .part-time').text(item['time']);
+            $('#detail-part .part-application').text(item['application']);
+            $('#detail-part .part-contact-info').text(item['contact_link']);
+            $('#detail-part .part-contents').text(item['contents']);
+          })
+        }
+      }
+    });
+    setTimeout(function(){
+      $('#detail-part').modal();
+    } , 200)
   })
 
   var options = {
-    url: '/BBS/index.php/user/Sports/add_sports_info' ,         // override for form's 'action' attribute
+    url: '/BBS/index.php/User/Part_time/add_part' ,         // override for form's 'action' attribute
     type: 'POST',        // 'get' or 'post', override for form's 'method' attribute
     success: showResponse ,  // post-submit callback
     clearForm: true        // clear all form fields after successful submit
   };
-  $('#sports-form').ajaxForm(options).submit(function (){return false;});
+  $('#part-form').ajaxForm(options).submit(function (){return false;});
   function showResponse(data){
     var json = eval('('+data+')');
     if (json.code == 10000) {
-      $('#sports-model').modal('hide');
+      $('#part-model').modal('hide');
     }else if (json.code == '10001') {
       alert("发布失败");
     }
