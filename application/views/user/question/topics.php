@@ -21,7 +21,10 @@
                         <strong><?php echo $item->topic_title;?></strong>
                       </a>
                       <p><?php echo $item->topic_decs;?></p>
-                      <a href="#" class="follow"><span class="glyphicon glyphicon-plus"></span>关注</a>
+                      <a href="#" class="follow">
+							<input type="hidden" value="<?php echo $item->id;?>"/>
+							<span class="glyphicon glyphicon-plus">关注</span>
+					  </a>
                     </div>
                   </div>
                 <?php endforeach;?>
@@ -58,3 +61,20 @@
   </div>
   <div class="col-md-1"></div>
 </div>
+<script>
+$(function(){
+	$(".follow").click(function(){
+		var top_num = $(this).children(1).val();
+		if($(this).find(".glyphicon").html()=="关注"){
+			$(this).find(".glyphicon").html("取消关注");
+			$(this).find(".glyphicon").removeClass("glyphicon-plus");
+		}else{
+			$(this).find(".glyphicon").html("关注");
+			$(this).find(".glyphicon").addClass("glyphicon-plus");
+		}
+	});
+	
+
+});
+
+</script>
