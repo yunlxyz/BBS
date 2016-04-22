@@ -1,5 +1,4 @@
 <link href="/BBS/public/bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
-
 <script src="/BBS/public/bootstrap/js/bootstrap-datetimepicker.js"></script>
 <script src="/BBS/public/bootstrap/js/locales/bootstrap-datetimepicker.fr.js"></script>
 <script src="/BBS/public/bootstrap/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
@@ -12,26 +11,56 @@
       <div class="col-md-9">
         <div class="row">
           <div class="col-md-12 clearfix">
-            <h4>运动信息</h4>
-            <div class="goods-list">
-              <?php foreach($list as $item):?>
-                <div class="goods-item">
-                  <div class="goods-lost－found">
-                    <span class="label label-warning"><?php echo $item->sports_type;?></span>
-                    <span class="sports-count pull-right">已有<?php echo $item->count_people;?>人报名</span>
+            <h4>兼职信息</h4>
+            <div class="part-time">
+              <div class="part-item">
+                <div class="part-title">
+                  <span class="label label-primary">兼职</span>
+                  <a href="javascript:;" class="expend" data-part="1">招募 第11期北大－云大－台大学生社会服务计划</a>
+                </div>
+                <div class="part-detail-time">
+                  <div><span>时间：</span>xxxx-xx-xx xx:xx:xx</div>
+                </div>
+              </div>
+              <div class="part-item">
+                <div class="part-title">
+                  <span class="label label-primary">兼职</span>
+                  <a href="javascript:;">招募 第11期北大－云大－台大学生社会服务计划</a>
+                </div>
+                <div class="part-detail-time">
+                  <div><span>时间：</span>xxxx-xx-xx xx:xx:xx</div>
+                </div>
+              </div>
+              <div class="part-item">
+                <div class="part-title">
+                  <span class="label label-primary">兼职</span>
+                  <a href="#">招募 第11期北大－云大－台大学生社会服务计划</a>
+                </div>
+                <div class="part-detail-time">
+                  <div><span>时间：</span>xxxx-xx-xx xx:xx:xx</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="detail-part" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
                   </div>
-                  <div class="goods-contents">
-                    <p><?php echo $item->contacts;?></p>
+                  <div class="modal-body">
+                    ...
                   </div>
-                  <div class="sports-details">
-                    <div class="sports-time">
-                      <a href="#"><?php echo $item->publisher;?></a> 发布于 <?php echo $item->publish_time;?>
-                    </div>
-                    <a class="pull-right" href="#">我要报名</a>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
                   </div>
                 </div>
-              <?php endforeach;?>
+              </div>
             </div>
+
           </div>
         </div>
       </div>
@@ -79,7 +108,6 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -97,6 +125,11 @@
 </script>
 <script type="text/javascript">
 $(document).ready(function() {
+  $('.expend').click(function(){
+    alert($(this).data('part'));
+    $('#detail-part').modal();
+  })
+
   var options = {
     url: '/BBS/index.php/user/Sports/add_sports_info' ,         // override for form's 'action' attribute
     type: 'POST',        // 'get' or 'post', override for form's 'method' attribute

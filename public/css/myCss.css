@@ -488,3 +488,21 @@ h4{
 .sports-details{
   padding: 10px 0;
 }
+
+
+
+/**
+ * part_time
+ */
+
+.part-item{
+  border-top: 1px solid #ccc;
+  padding: 10px 0;
+}
+.part-title a{
+  margin: 0 10px;
+}
+.part-detail-time{
+  padding: 0 45px;
+  margin:5px 0;
+}

@@ -36,17 +36,30 @@ $(document).ready(function(){
   $(document).on('click' , '.up' , function(){
     var answer_id = $(this).data('aid');
     var mythis = $(this);
-
     $.ajax({
       type: "POST",
-      url: "index.php/User/Follow/unfollow_question",
-      data: {question_id: follow_question} ,
+      url: "index.php/Index/add_like",
+      data: {answer_id: answer_id} ,
       success: function(data){
         var json = eval('('+data+')');
         if(json.code == "10000"){
           mythis.addClass('pressed');
-          mythis.html('<span class="glyphicon glyphicon-plus feed-icon"></span>关注问题');
-          mythis.attr('class' , 'follow-link');
+        }
+      }
+    })
+  });
+  
+  $(document).on('click' , '.up' , function(){
+    var answer_id = $(this).data('aid');
+    var mythis = $(this);
+    $.ajax({
+      type: "POST",
+      url: "index.php/Index/add_like",
+      data: {answer_id: answer_id} ,
+      success: function(data){
+        var json = eval('('+data+')');
+        if(json.code == "10000"){
+          mythis.addClass('pressed');
         }
       }
     })
