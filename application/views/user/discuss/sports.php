@@ -14,11 +14,11 @@
           <div class="col-md-12 clearfix">
             <h4>运动信息</h4>
             <div class="goods-list">
-              <?php foreach($list as $item):?>
+              <?php foreach($list as $item){?>
                 <div class="goods-item">
                   <div class="goods-lost－found">
                     <span class="label label-warning"><?php echo $item->sports_type;?></span>
-                    <span class="sports-count pull-right">已有<?php echo $item->count_people;?>人报名</span>
+                    <a href="javascript:void(0);" class="AlreadyBm" data-toggle="modal" data-sid="<?php echo $item->id; ?>"  data-target="#alreadyBaoming"><span class="sports-count pull-right">已有<?php echo $item->num ? $item->num : 0;?>人报名</span></a>
                   </div>
                   <div class="goods-contents">
                     <p><?php echo $item->contacts;?></p>
@@ -26,15 +26,37 @@
                   <div class="sports-details">
                     <div class="sports-time">
                       <a href="#"><?php echo $item->publisher;?></a> 发布于 <?php echo $item->publish_time;?>
-                    </div>
-                    <a class="pull-right" href="#">我要报名</a>
+                    </div>					
+					<a class="pull-right a-bm" data-sid="<?php echo $item->id; ?>" href="javascript:void(0);"><?php if(in_array($item->id,$fsport)){
+						echo '取消报名';
+					}else{
+						echo '我要报名';
+					}
+					?></a>
                   </div>
                 </div>
-              <?php endforeach;?>
+              <?php };?>
             </div>
           </div>
         </div>
       </div>
+		  <!-- 已经有多少人报名 -->
+	<div class="modal fade" id="alreadyBaoming" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+		  </div>
+		  <div class="modal-body">
+			...
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>			
+		  </div>
+		</div>
+	  </div>
+	</div>
       <div class="col-md-3">
         <ul class="list-group side-nav-group">
           <li class="list-group-item"><span class="glyphicon glyphicon-list-alt"></span><a href="javascript:void(0);" data-toggle="modal" data-target="#sports-model">发布运动信息</a></li>
@@ -111,5 +133,38 @@ $(document).ready(function() {
       alert("发布失败");
     }
   }
+  
+  $('.a-bm').click(function(){
+	  var follow_sport = $(this).data('sid');
+	  var fthis = $(this); 
+	  if(fthis.html() == '我要报名'){
+		  $.ajax({
+			  type:"POST",
+			  data: {sport_id:follow_sport},
+			  url: "../../../index.php/User/Sports/apply_sport",
+			  success:function(data){
+				  var json = eval('('+data+')');
+				  fthis.html('取消报名');
+			  },
+			  error: function(){
+				  alert('请重试');
+			  }
+		  })
+	  }else{
+		  alert('取消报名还没做');
+	  }
+  });
+  $('.AlreadyBm').click(function(){
+	  var follow_sport = $(this).data('sid');
+	  $.ajax({
+		  type: "POST",
+		  data: {sport_id:follow_sport},
+		  url: "",
+		  success: function(){
+			  
+		  }
+	  });
+  });
+  
 });
 </script>

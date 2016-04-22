@@ -10,6 +10,7 @@ class Sports extends CI_Controller{
     $this->load->helper('url');
     $this->load->library('session');
     $this->load->model('Wrk_sports');
+	$this->load->model('Wrk_sports_follow');
   }
 
   public function index(){
@@ -17,6 +18,7 @@ class Sports extends CI_Controller{
       $info['user'] = $_SESSION['account'];
       $info['title'] = '一起运动 - 沙湖';
       $this->load->view('user/template/header' , $info);
+	  $data['fsport'] = $this->get_followed_sport();
 
       $data['list'] = $this->get_sports_info();
       $this->load->view('user/discuss/sports' , $data);
@@ -26,6 +28,17 @@ class Sports extends CI_Controller{
     }
   }
 
+  /**
+   * 获取已经报名的运动
+   */
+  public function get_followed_sport(){
+	  $res = $this->Wrk_sports_follow->get_fosp_by_account($_SESSION['account']);
+	  foreach($res as $val){
+		  $arr[] = $val->follow_sport;
+	  }
+	  return $arr;
+  }
+  
   public function get_sports_info(){
     $rows = 0;
     $offset = 15;
@@ -54,5 +67,28 @@ class Sports extends CI_Controller{
     }
     echo json_encode($data);
   }
+  /**
+   * 获取某运动已经报名的名单
+   */
+  public function get_already_bm(){
+	  //$sport_id = $this->input->()
+  }
 
+  /**
+   * 我要报名
+   */
+  public function apply_sport(){
+	$follow_sport = $this->input->post('sport_id');
+    $follower = $_SESSION['account'];
+    $follow_time = date('Y-m-d H:i:s' , time());
+    $result = $this->Wrk_sports_follow->save_follow_sport($follower, $follow_sport, $follow_time);
+    if($result > 0){
+      $data['code'] = 20000; //关注成功
+    }else {
+      $data['code'] = 20001; //关注失败
+    }
+    echo json_encode($data);
+  }
+  
+  
 }

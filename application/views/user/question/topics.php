@@ -7,7 +7,7 @@
         <div class="row">
           <div class="col-md-12">
             <div class="topics-cat-title">
-              <a href="#" class="pull-right">你关注了20个话题</a>
+              <a href="#" class="pull-right">你关注了<?php echo count($ftopic);?>个话题</a>
               <h4><span class="glyphicon glyphicon-th-large" ria-hidden="true"></span>话题广场</h4>
             </div>
             <div class="topics-cat-main"></div>
@@ -23,7 +23,12 @@
                       <p><?php echo $item->topic_decs;?></p>
                       <a href="#" class="follow">
 							<input type="hidden" value="<?php echo $item->id;?>"/>
-							<span class="glyphicon glyphicon-plus">关注</span>
+							<?php if(in_array($item->id,$ftopic)){
+									echo '<span class="glyphicon">取消关注</span>';
+								}else{
+									echo '<span class="glyphicon glyphicon-plus">关注</span>';
+								}
+							?>
 					  </a>
                     </div>
                   </div>
@@ -64,17 +69,46 @@
 <script>
 $(function(){
 	$(".follow").click(function(){
-		var top_num = $(this).children(1).val();
+		var topic_id = $(this).children(1).val();
+		var fthis = $(this);
 		if($(this).find(".glyphicon").html()=="关注"){
-			$(this).find(".glyphicon").html("取消关注");
-			$(this).find(".glyphicon").removeClass("glyphicon-plus");
+			$.ajax({
+				type:"POST",
+				url:"../../../index.php/User/Topics/follow_topic",
+				data: {topic_id:topic_id},
+				success: function(data){
+					var json = eval('('+data+')');
+					if(json.code == 20000){
+						fthis.find(".glyphicon").html("取消关注");
+						fthis.find(".glyphicon").removeClass("glyphicon-plus");
+					}
+				},
+				error:function(){
+					alert('请重试');
+				}
+			});
 		}else{
-			$(this).find(".glyphicon").html("关注");
-			$(this).find(".glyphicon").addClass("glyphicon-plus");
+			if($(this).find(".glyphicon").html()=="取消关注"){
+				$.ajax({
+					type:"POST",
+					url:"../../../index.php/User/Topics/unfollow_topic",
+					data: {topic_id:topic_id},
+					success: function(data){
+						var json = eval('('+data+')');
+						if(json.code == 20000){
+							fthis.find(".glyphicon").html("关注");
+							fthis.find(".glyphicon").addClass("glyphicon-plus");
+						}
+					},
+					error:function(){
+						alert('请重试');
+					}
+				})
+			}
+
 		}
 	});
 	
-
 });
 
 </script>
