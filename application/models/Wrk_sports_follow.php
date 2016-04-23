@@ -21,6 +21,15 @@ class Wrk_sports_follow extends CI_Model{
 	}
 	
 	/**
+	 * 取消报名
+	 */
+	 public function delete_follow_sport($follower, $follow_sport){
+		 $sql = "DELETE FROM wrk_sports_follow WHERE follower = '$follower' AND follow_sport = $follow_sport";
+		 $query = $this->db->query($sql);
+		 return $query;
+	 }
+	
+	/**
 	 * 获取某人已报名的运动
 	 *
 	 */
@@ -34,7 +43,7 @@ class Wrk_sports_follow extends CI_Model{
 	 * 获取某运动报名名单
 	 */
 	 public function get_fosp_by_sportid($sport_id){
-		 $sql = "SELECT * FROM wrk_sports_follow WHERE follow_sport = $sport_id";
+		 $sql = "SELECT * FROM wrk_sports_follow WHERE follow_sport = $sport_id GROUP BY follower";
 		 $query = $this->db->query($sql);
 		 return $query->result();
 	 }

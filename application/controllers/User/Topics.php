@@ -19,6 +19,7 @@ class Topics extends CI_Controller{
       $info['title'] = '话题广场 - 沙湖';
       $this->load->view('user/template/header' , $info);
 	  $res = $this->Wrk_topic_follow->get_foto_by_account($_SESSION['account']);
+	  $arr = array();
 	  foreach($res as $value){
 		  $arr[] = $value->follow_topic;
 	  }

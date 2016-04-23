@@ -24,14 +24,18 @@ class Login extends CI_Controller{
    */
   public function login(){
     $account = $this->input->post('account');
-    $password = $this->input->post('password');
+    $password = md5($this->input->post('password'));
 
     $query = $this->Basic_user->query_login($account);
+    
+
     if ($query->num_rows() > 0) {
+      $info = $this->Basic_user->query_user_info($account);
+      $nickname = $info[0]->nickname;
       $tmp = $query->result();
       if ($tmp[0]->password == $password) {
         $data['code'] = 10000; //登录成功
-        $session_array = array('account' => $account , 'logged_in' => TRUE);
+        $session_array = array('account' => $account , 'logged_in' => TRUE,'nickname'=>$nickname);
         $this->session->set_userdata($session_array);
       }else {
         $data['code'] = 10001; //登录失败，密码错误

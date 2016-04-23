@@ -15,7 +15,7 @@ class Sports extends CI_Controller{
 
   public function index(){
     if (isset($_SESSION['account'])) {
-      $info['user'] = $_SESSION['account'];
+      $info['user'] = $_SESSION['nickname'];
       $info['title'] = '一起运动 - 沙湖';
       $this->load->view('user/template/header' , $info);
 	  $data['fsport'] = $this->get_followed_sport();
@@ -33,6 +33,7 @@ class Sports extends CI_Controller{
    */
   public function get_followed_sport(){
 	  $res = $this->Wrk_sports_follow->get_fosp_by_account($_SESSION['account']);
+	  $arr = array();
 	  foreach($res as $val){
 		  $arr[] = $val->follow_sport;
 	  }
@@ -71,7 +72,9 @@ class Sports extends CI_Controller{
    * 获取某运动已经报名的名单
    */
   public function get_already_bm(){
-	  //$sport_id = $this->input->()
+	  $sport_id = $this->input->post('sport_id');
+	  $res = $this->Wrk_sports_follow->get_fosp_by_sportid($sport_id);
+	  echo json_encode($res);
   }
 
   /**
@@ -90,5 +93,19 @@ class Sports extends CI_Controller{
     echo json_encode($data);
   }
   
+  /**
+   * 取消报名
+   */
+   public function unapply_sport(){
+	   	$follow_sport = $this->input->post('sport_id');
+		$follower = $_SESSION['account'];
+		$result = $this->Wrk_sports_follow->delete_follow_sport($follower, $follow_sport);
+		if($result > 0){
+		  $data['code'] = 20000; //取关成功
+		}else {
+		  $data['code'] = 20001; //取关失败
+		}
+		echo json_encode($data);
+   }
   
 }

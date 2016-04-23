@@ -18,7 +18,7 @@
                 <div class="goods-item">
                   <div class="goods-lost－found">
                     <span class="label label-warning"><?php echo $item->sports_type;?></span>
-                    <a href="javascript:void(0);" class="AlreadyBm" data-toggle="modal" data-sid="<?php echo $item->id; ?>"  data-target="#alreadyBaoming"><span class="sports-count pull-right">已有<?php echo $item->num ? $item->num : 0;?>人报名</span></a>
+                    <a href="javascript:void(0);" class="AlreadyBm" data-toggle="modal" data-sid="<?php echo $item->id; ?>"  data-target="#alreadyBaoming"><span class="sports-count pull-right">已有<span><?php echo $item->num ? $item->num : 0;?></span>人报名</span></a>
                   </div>
                   <div class="goods-contents">
                     <p><?php echo $item->contacts;?></p>
@@ -46,10 +46,21 @@
 		<div class="modal-content">
 		  <div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+			<h4 class="modal-title" id="alreadyTitle">标题</h4>
 		  </div>
 		  <div class="modal-body">
-			...
+			<table class="table">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>活动参与人</th>
+						<th>参与时间</th>
+					</tr>
+				</thead>
+				<tbody id="alreadyTbody">
+					
+				</tbody>
+			</table>
 		  </div>
 		  <div class="modal-footer">
 			<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>			
@@ -137,6 +148,7 @@ $(document).ready(function() {
   $('.a-bm').click(function(){
 	  var follow_sport = $(this).data('sid');
 	  var fthis = $(this); 
+	  var bmnum = fthis.parent().parent().children().children().next().children().children();
 	  if(fthis.html() == '我要报名'){
 		  $.ajax({
 			  type:"POST",
@@ -145,23 +157,44 @@ $(document).ready(function() {
 			  success:function(data){
 				  var json = eval('('+data+')');
 				  fthis.html('取消报名');
+				  bmnum.html(parseInt(bmnum.html())+1);
 			  },
 			  error: function(){
 				  alert('请重试');
 			  }
 		  })
 	  }else{
-		  alert('取消报名还没做');
+		  $.ajax({
+			  type:"POST",
+			  data: {sport_id:follow_sport},
+			  url: "../../../index.php/User/Sports/unapply_sport",
+			  success:function(data){
+				  var json = eval('('+data+')');
+				  fthis.html('我要报名');
+				  bmnum.html(parseInt(bmnum.html())-1);
+			  },
+			  error: function(){
+				  alert('请重试');
+			  }
+		  })
 	  }
   });
   $('.AlreadyBm').click(function(){
 	  var follow_sport = $(this).data('sid');
+	  var athis = $(this);
 	  $.ajax({
 		  type: "POST",
 		  data: {sport_id:follow_sport},
-		  url: "",
-		  success: function(){
-			  
+		  url: "../../User/Sports/get_already_bm",
+		  success: function(data){
+			  var json = eval('('+data+')');
+			  var html = '';
+			  for(i = 0; i < json.length; i++){
+				  html += '<tr><th scope="row">'+i+'</th><td>'+json[i]['follower']+'</td><td>' + json[i]['follow_time']+'</td></tr>';
+			  }
+			  $("#alreadyTbody").html(html);
+			  //alert(json[0]['follower']);
+			  $('#alreadyTitle').html(athis.parent().next().children().html());
 		  }
 	  });
   });
