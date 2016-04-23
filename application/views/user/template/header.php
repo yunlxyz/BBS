@@ -11,6 +11,7 @@
     <script src="/BBS/public/bootstrap/js/jquery.min.js"></script>
     <script src="/BBS/public/bootstrap/js/bootstrap.min.js"></script>
     <script src="/BBS/public/bootstrap/js/jquery.form.js"></script>
+    <script src="<?php echo base_url();?>public/js/jquery.infinitescroll.js"></script>
     <script src="/BBS/public/js/my_js.js"></script>
   </head>
   <body>

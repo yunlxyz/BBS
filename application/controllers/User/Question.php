@@ -47,10 +47,12 @@ class Question extends CI_Controller{
    */
   public function index_all(){
     if (isset($_SESSION['account'])) {
+      $page = $this->input->get('page');
+      $page = empty($page)? 1 : $page;
       $info['user'] = $_SESSION['account'];
       $info['title'] = '所有问题 - 沙湖';
       $this->load->view('user/template/header' , $info);
-      $result['question'] = $this->question_all();
+      $result['question'] = $this->question_all($page);
       $this->load->view('user/question/question_all' , $result);
       $this->load->view('user/template/footer');
     }else {
@@ -63,8 +65,10 @@ class Question extends CI_Controller{
    *
    * @return array [description]
    */
-  public function question_all(){
-    $result = $this->Wrk_question->query_question_all();
+  public function question_all($page){
+    $offset = ($page - 1)*10;
+    $result = $this->Wrk_question->query_question_all($offset);
+    // var_dump($result);
     return $result;
   }
 

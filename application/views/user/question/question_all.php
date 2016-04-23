@@ -4,7 +4,7 @@
   <div class="col-md-10 offset-body">
     <div class="row">
       <div class="col-md-9">
-        <div class="logs-questions-wrap">
+        <div class="logs-questions-wrap" id="content">
           <div class="page-header small-nav-item">
             <h3>所有问题 <small>你所需要的都在这里...</small></h3>
           </div>
@@ -21,6 +21,7 @@
               <div class="logs-questions-meta"><time><?php echo $item->question_time?></time></div>
             </div>
           <?php endforeach;?>
+          <a class="btn btn-default btn-block" id="next" href="/BBS/index.php/User/Question/index_all?page=2" role="button">点击加载更多。。。</a>
 
           <!-- <div class="logs-questions-item">
             <h4><a href="#">你们健身时都在想什么？健身的同时干着什么才能坚持下来健身？</a></h4>
@@ -48,3 +49,38 @@
   </div>
   <div class="col-md-1"></div>
 </div>
+<script>
+	$('#content').infinitescroll({
+    loading: {
+      finishedMsg: '<a class="btn btn-default btn-block" href="javascript:;" role="button">问题已经全部加载完了</a>',
+      img: null,
+      msg: null,
+      msgText: '<a class="btn btn-default btn-block" href="javascript:;" role="button">正在加载更多数据，请稍后。。。</a>',
+      selector: null,
+      speed: 'slow',
+      start: undefined
+    },
+		// callback		: function () { console.log('using opts.callback'); },
+		navSelector  	: "#next",
+		nextSelector 	: "#next",
+		itemSelector 	: ".logs-questions-item",
+		debug		 	: false,
+		dataType	 	: 'html',
+		// behavior		: 'twitter',
+		appendCallback	: true, // USE FOR PREPENDING
+		// pathParse     	: function( pathStr, nextPage ){ return pathStr.replace('2', nextPage ); }
+    },
+    function(newElements, data, url) {
+		}
+  );
+  // $(window).unbind('.infscr');
+  // // $(document).trigger(‘retrieve.infscr’);
+  // // $('.infscr').infinitescroll('unbind');
+  // $('#next').click(function(){
+  //   // $(document).trigger('retrieve.infscr');
+  //   $('#content').infinitescroll('retrieve');
+  // })
+  // $(document).ajaxError(function(e,xhr,opt){
+  //   if (xhr.status == 404) $('#next').remove();
+  // });
+</script>

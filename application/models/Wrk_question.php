@@ -33,11 +33,12 @@ class Wrk_question extends CI_Model{
    *
    * @return array [description]
    */
-  public function query_question_all(){
+  public function query_question_all($offset){
     $sql = 'SELECT *
             FROM wrk_question q
-            ORDER BY q.question_time DESC';
-    $query = $this->db->query($sql);
+            ORDER BY q.question_time DESC
+            LIMIT ? , 10';
+    $query = $this->db->query($sql , array($offset));
     return $query->result();
   }
 

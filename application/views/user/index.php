@@ -97,11 +97,9 @@
   <div class="col-md-1"></div>
 </div>
 <script src="<?php echo base_url();?>public/js/common.js"></script>
-<script src="<?php echo base_url();?>public/js/jquery.infinitescroll.js"></script>
 <script>
 	$('#content').infinitescroll({
     loading: {
-      finished: undefined,
       finishedMsg: '<a class="btn btn-default btn-block" href="javascript:;" role="button">问题已经全部加载完了</a>',
       img: null,
       msg: null,
