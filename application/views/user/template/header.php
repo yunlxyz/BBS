@@ -11,6 +11,7 @@
     <script src="/BBS/public/bootstrap/js/jquery.min.js"></script>
     <script src="/BBS/public/bootstrap/js/bootstrap.min.js"></script>
     <script src="/BBS/public/bootstrap/js/jquery.form.js"></script>
+    <script src="/BBS/public/js/jquery.infinitescroll.js"></script>
     <script src="/BBS/public/js/my_js.js"></script>
   </head>
   <body>
@@ -37,7 +38,7 @@
                   <li class="active"><a href="/BBS/index.php">首页 <span class="sr-only">(current)</span></a></li>
                   <li><a href="/BBS/index.php/User/News/index">资讯 </a></li>
                   <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">分类讨论 <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">发现 <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                       <li><a href="/BBS/index.php/User/Sports/index">一起运动 </a></li>
                       <li><a href="#">我爱学习 </a></li>

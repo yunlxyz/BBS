@@ -36,7 +36,7 @@ class Topics extends CI_Controller{
     $result = $this->Basic_topic->query_topic_all();
     return $result;
   }
-  
+
   public function follow_topic(){
 	$follow_topic = $this->input->post('topic_id');
     $follower = $_SESSION['account'];
@@ -49,7 +49,7 @@ class Topics extends CI_Controller{
     }
     echo json_encode($data);
   }
-  
+
 	public function unfollow_topic(){
 		$follow_topic = $this->input->post('topic_id');
 		$follower = $_SESSION['account'];
@@ -60,16 +60,9 @@ class Topics extends CI_Controller{
 			$data['code'] = 20001;//取关失败
 		}
 		echo json_encode($data);
-		  
+
 	}
-  
+
 }
 
 ?>
-
-
-
-
-
-
-

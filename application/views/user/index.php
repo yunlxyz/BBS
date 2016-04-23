@@ -84,7 +84,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-3 tmp">
         <ul class="list-group side-nav-group">
           <li class="list-group-item"><span class="glyphicon glyphicon-list-alt"></span><a href="/BBS/index.php/User/Question/index_all">所有问题</a></li>
           <li class="list-group-item"><span class="glyphicon glyphicon-th-large"></span><a href="/BBS/index.php/User/Topics/index">话题广场</a></li>
@@ -96,12 +96,10 @@
   </div>
   <div class="col-md-1"></div>
 </div>
-<script src="<?php echo base_url();?>public/js/common.js"></script>
-<script src="<?php echo base_url();?>public/js/jquery.infinitescroll.js"></script>
+<script src="/BBS/public/js/common.js"></script>
 <script>
 	$('#content').infinitescroll({
     loading: {
-      finished: undefined,
       finishedMsg: '<a class="btn btn-default btn-block" href="javascript:;" role="button">问题已经全部加载完了</a>',
       img: null,
       msg: null,

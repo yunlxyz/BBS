@@ -2,15 +2,15 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * ¹Ø×¢»°ÌâÄ£ĞÍ
+ * ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½
  *
  * 2016-04
  * @author pansichen 905424343@qq.com
  */
 class Wrk_topic_follow extends CI_Model{
-	
+
 	/**
-	 *  ¹Ø×¢»°Ìâ
+	 *  ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½
 	 *
 	 *
 	 */
@@ -20,9 +20,9 @@ class Wrk_topic_follow extends CI_Model{
 		$query = $this->db->query($sql);
 		return $query;
 	}
-	
+
 	/**
-	 *  È¡Ïû¹Ø×¢»°Ìâ
+	 *  È¡ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½
 	 *
 	 */
 	public function delete_follow_topic($follower, $follow_topic){
@@ -30,9 +30,9 @@ class Wrk_topic_follow extends CI_Model{
 		$query = $this->db->query($sql);
 		return $query;
 	}
-	
+
 	/**
-	 * »ñÈ¡Ä³ÓÃ»§¹Ø×¢µÄ»°Ìâ
+	 * ï¿½ï¿½È¡Ä³ï¿½Ã»ï¿½ï¿½ï¿½×¢ï¿½Ä»ï¿½ï¿½ï¿½
 	 *
 	 */
 	public function get_foto_by_account($follower){
@@ -40,5 +40,14 @@ class Wrk_topic_follow extends CI_Model{
 		$query = $this->db->query($sql);
 		return $query->result();
 	}
-	
+
+	public function query_topic_follow($follower){
+		$sql = 'SELECT t.*
+						FROM wrk_topic_follow tf
+							INNER JOIN basic_topic t ON tf.follow_topic = t.id
+						WHERE tf.follower = ?';
+		$query = $this->db->query($sql , array($follower));
+		return $query->result();
+	}
+
 }

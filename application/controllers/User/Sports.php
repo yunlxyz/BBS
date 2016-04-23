@@ -39,7 +39,7 @@ class Sports extends CI_Controller{
 	  }
 	  return $arr;
   }
-  
+
   public function get_sports_info(){
     $rows = 0;
     $offset = 15;
@@ -107,5 +107,4 @@ class Sports extends CI_Controller{
 		}
 		echo json_encode($data);
    }
-  
 }

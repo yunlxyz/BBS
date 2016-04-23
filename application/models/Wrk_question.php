@@ -33,14 +33,21 @@ class Wrk_question extends CI_Model{
    *
    * @return array [description]
    */
-  public function query_question_all(){
+  public function query_question_all($offset){
     $sql = 'SELECT *
             FROM wrk_question q
-            ORDER BY q.question_time DESC';
-    $query = $this->db->query($sql);
+            ORDER BY q.question_time DESC
+            LIMIT ? , 10';
+    $query = $this->db->query($sql , array($offset));
     return $query->result();
   }
 
+  /**
+   * 查询单条问题
+   *
+   * @param  [type] $question_id [description]
+   * @return [type]              [description]
+   */
   public function query_question_singal($question_id){
     $sql = 'SELECT q.* , t.topic_title
             FROM wrk_question q INNER JOIN basic_topic t ON q.question_class = t.id
@@ -49,12 +56,30 @@ class Wrk_question extends CI_Model{
     return $query->result();
   }
 
+  /**
+   * 用户发布问题
+   *
+   * @param [type] $question_title [description]
+   * @param [type] $question_decs  [description]
+   * @param [type] $question_type  [description]
+   * @param [type] $question_time  [description]
+   * @param [type] $questioner     [description]
+   */
   public function add_question_piblish($question_title , $question_decs , $question_type , $question_time , $questioner){
     $sql = 'INSERT INTO wrk_question(question_title , question_desc , question_class , question_time , questioner)
             VALUES(? , ? , ? , ? , ?)';
     $query = $this->db->query($sql , array($question_title , $question_decs , $question_type , $question_time , $questioner));
     return $query;
   }
+
+  public function query_question_count($account){
+    $sql = 'SELECT COUNT(*) as count
+            FROM wrk_question q
+            WHERE q.questioner = ?';
+    $query = $this->db->query($sql , array($account));
+    return $query->result();
+  }
+
 }
 
 ?>
