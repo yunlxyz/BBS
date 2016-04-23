@@ -26,9 +26,27 @@ class News extends CI_Controller{
     }
   }
 
+  /**
+   * 获取新闻信息
+   * @return [type] [description]
+   */
   public function news_latest(){
     $result = $this->Wrk_news->query_news_latest();
     return $result;
+  }
+
+  public function get_news_signal(){
+    $news_id = $this->input->post('news_id');
+    $result = $this->Wrk_news->query_news_signal($news_id);
+    if(count($result) > 0){
+      $data['code'] = 10000;
+      $data['news'] = $result;
+    }else {
+      $data['code'] = 10001;
+      $data['news'] = '';
+    }
+    // var_dump($result);
+    echo json_encode($data);
   }
 }
 

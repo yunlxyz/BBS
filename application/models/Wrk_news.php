@@ -21,6 +21,14 @@ class Wrk_news extends CI_Model
     $query = $this->db->query($sql);
     return $query->result();
   }
+
+  public function query_news_signal($news_id){
+    $sql = 'SELECT *
+            FROM wrk_news n
+            WHERE n.id = ?';
+    $query = $this->db->query($sql , array($news_id));
+    return $query->result();
+  }
 }
 
 ?>
