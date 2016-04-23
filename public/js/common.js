@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
   $(document).on('click' , '.follow-link' ,function(){
     var follow_question = $(this).data('qid');
     var mythis = $(this);
@@ -64,4 +65,5 @@ $(document).ready(function(){
       }
     })
   });
+
 })

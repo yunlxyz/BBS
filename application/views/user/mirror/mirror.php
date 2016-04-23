@@ -211,10 +211,12 @@
             <h5>我的回答</h5>
           </div>
           <div class="section-wrap-content">
-            <div class="section-wrap-item">
-              <span class="profile-setion-time">于：2016-03-24 18:00:00 关注了问题</span>
-              <div class="question_link"><a href="#">怎样深入学习php，成为php高手？</a></div>
-            </div>
+            <?php foreach($answer as $item):?>
+              <div class="section-wrap-item">
+                <span class="profile-setion-time"><?php echo $item->answer_time;?> 回答问题</span>
+                <div class="question_link"><a href="#"><?php echo $item->question_title;?></a></div>
+              </div>
+            <?php endforeach;?>
             <div class="section-wrap-item">
               <span class="profile-setion-time">于：2016-03-24 18:00:00 关注了问题</span>
               <div class="question_link"><a href="#">怎样深入学习php，成为php高手？</a></div>
@@ -230,15 +232,17 @@
         <div class="mirror-sidebar">
           <div class="side-section-inner">
             <div class="profile-side-section-title">
-              关注了<a href="#">20个话题</a>
+              关注了<a href="#"><?php echo $topic['count'];?></a>个话题
             </div>
             <div class="profile-following-topic">
+              <?php foreach($topic['list'] as $item):?>
+                <a href="javascript:;"><img src="<?php echo $item->topic_avatar;?>" alt="<?php echo $item->topic_title;?>" /></a>
+              <?php endforeach;?>
+              <!-- <a href="#"><img src="http://img2.imgtn.bdimg.com/it/u=2001048216,3423073968&fm=23&gp=0.jpg" alt="图片" /></a>
               <a href="#"><img src="http://img2.imgtn.bdimg.com/it/u=2001048216,3423073968&fm=23&gp=0.jpg" alt="图片" /></a>
               <a href="#"><img src="http://img2.imgtn.bdimg.com/it/u=2001048216,3423073968&fm=23&gp=0.jpg" alt="图片" /></a>
               <a href="#"><img src="http://img2.imgtn.bdimg.com/it/u=2001048216,3423073968&fm=23&gp=0.jpg" alt="图片" /></a>
-              <a href="#"><img src="http://img2.imgtn.bdimg.com/it/u=2001048216,3423073968&fm=23&gp=0.jpg" alt="图片" /></a>
-              <a href="#"><img src="http://img2.imgtn.bdimg.com/it/u=2001048216,3423073968&fm=23&gp=0.jpg" alt="图片" /></a>
-              <a href="#"><img src="http://img2.imgtn.bdimg.com/it/u=2001048216,3423073968&fm=23&gp=0.jpg" alt="图片" /></a>
+              <a href="#"><img src="http://img2.imgtn.bdimg.com/it/u=2001048216,3423073968&fm=23&gp=0.jpg" alt="图片" /></a> -->
             </div>
           </div>
         </div>
@@ -263,10 +267,8 @@ $(function(){
         sex: sex
       },
       success: function(){
-        
       },
       error: function(){
-
       }
     })
   })

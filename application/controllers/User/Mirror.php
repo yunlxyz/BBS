@@ -17,6 +17,8 @@ class Mirror extends CI_Controller{
       $info['title'] = '未闻花名 的个人主页 - 沙湖';
       $this->load->view('user/template/header' , $info);
       $data['info'] = $this->user_info($info['user']);
+      $data['topic'] = $this->get_topci_follow($info['user']);
+      $data['answer'] = $this->get_answer_list($info['user']);
       $this->load->view('User/mirror/mirror' , $data);
       $this->load->view('user/template/footer');
     }else {
@@ -27,6 +29,26 @@ class Mirror extends CI_Controller{
   public function user_info($account){
     $this->load->model('Basic_user');
     $result = $this->Basic_user->query_user_info($account);
+    return $result;
+  }
+
+  /**
+   * 获取用户关注的话题
+   *
+   * @param  [type] $account [description]
+   * @return [type]          [description]
+   */
+  public function get_topci_follow($account){
+    $this->load->model('Wrk_topic_follow');
+    $result = $this->Wrk_topic_follow->query_topic_follow($account);
+    $data['count'] = count($result);
+    $data['list'] = $result;
+    return $data;
+  }
+
+  public function get_answer_list($account){
+    $this->load->model('Wrk_answer');
+    $result = $this->Wrk_answer->query_answer_by_account($account);
     return $result;
   }
 

@@ -44,10 +44,28 @@ class Wrk_answer extends CI_Model
     return $query->result();
   }
 
+  /**
+   * 发布问题
+   *
+   * @param  [type] $answer_decs [description]
+   * @param  [type] $answerer    [description]
+   * @param  [type] $answer_time [description]
+   * @param  [type] $question_id [description]
+   * @return [type]              [description]
+   */
   public function save_publish_answer($answer_decs , $answerer , $answer_time , $question_id){
     $sql = 'INSERT INTO wrk_answer (answer_decs , answerer , answer_time , question_id)
             VALUES (? , ? , ? ,?)';
     $query = $this->db->query($sql , array($answer_decs , $answerer , $answer_time , $question_id));
+    return $query->result();
+  }
+
+  public function query_answer_by_account($account){
+    $sql = 'SELECT q.* , a.answer_decs , a.answer_time
+            FROM wrk_answer a
+              INNER JOIN wrk_question q ON a.question_id = q.id
+            WHERE a.answerer = ?';
+    $query = $this->db->query($sql , array($account));
     return $query->result();
   }
 }

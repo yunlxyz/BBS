@@ -33,12 +33,13 @@ class Sports extends CI_Controller{
    */
   public function get_followed_sport(){
 	  $res = $this->Wrk_sports_follow->get_fosp_by_account($_SESSION['account']);
+    $arr = array();
 	  foreach($res as $val){
 		  $arr[] = $val->follow_sport;
 	  }
 	  return $arr;
   }
-  
+
   public function get_sports_info(){
     $rows = 0;
     $offset = 15;
@@ -89,6 +90,6 @@ class Sports extends CI_Controller{
     }
     echo json_encode($data);
   }
-  
-  
+
+
 }

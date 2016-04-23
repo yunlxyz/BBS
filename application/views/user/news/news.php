@@ -48,9 +48,9 @@
 <div class="row" style="margin-top:4.1%;">
   <div class="col-md-1"></div>
   <div class="col-md-10 offset-body">
-    <div class="row">
+    <div class="row news-list">
       <?php foreach($news as $item):?>
-        <div class="col-sm-6 col-md-4">
+        <div class="col-sm-6 col-md-4 news-item">
           <div class="thumbnail">
             <img src="http://img2.3lian.com/2014/f5/158/d/86.jpg" alt="...">
             <div class="caption">
@@ -89,3 +89,13 @@
   </div>
   <div class="col-md-1"></div>
 </div>
+<script src="/BBS/public/js/masonry.pkgd.js"></script>
+<script src="/BBS/public/js/masonry.pkgd.min.js"></script>
+<script>
+$('.news-list').masonry({
+  // options...
+  itemSelector: '.news-item',
+  // columnWidth: 1 ,
+  percentPosition: true
+});
+</script>

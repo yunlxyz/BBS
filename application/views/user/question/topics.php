@@ -17,7 +17,7 @@
                   <div class="item">
                     <div class="blk">
                       <a href="#">
-                        <img src="http://localhost/BBS/public/images/demo.jpg" />
+                        <img src="<?php echo $item->topic_avatar;?>" />
                         <strong><?php echo $item->topic_title;?></strong>
                       </a>
                       <p><?php echo $item->topic_decs;?></p>
@@ -108,7 +108,7 @@ $(function(){
 
 		}
 	});
-	
+
 });
 
 </script>
