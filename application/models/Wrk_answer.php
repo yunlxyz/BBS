@@ -60,11 +60,21 @@ class Wrk_answer extends CI_Model
     return $query->result();
   }
 
-  public function query_answer_by_account($account){
+  public function query_answer_by_account($account , $offset){
     $sql = 'SELECT q.* , a.answer_decs , a.answer_time
             FROM wrk_answer a
               INNER JOIN wrk_question q ON a.question_id = q.id
-            WHERE a.answerer = ?';
+            WHERE a.answerer = ?
+            ORDER BY a.answer_time DESC
+            LIMIT ? , 10';
+    $query = $this->db->query($sql , array($account , $offset));
+    return $query->result();
+  }
+
+  public function query_answer_count($account){
+    $sql = 'SELECT COUNT(*) as count
+            FROM wrk_answer q
+            WHERE q.answerer = ?';
     $query = $this->db->query($sql , array($account));
     return $query->result();
   }

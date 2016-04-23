@@ -166,5 +166,12 @@ class Question extends CI_Controller{
     $result = $this->Wrk_answer->save_publish_answer($answer_decs , $answerer , $answer_time , $question_id);
   }
 
+  public function get_question_count(){
+    $account = $_SESSION['account'];
+    $result = $this->Wrk_question->query_question_count($account);
+    $data['count'] = ceil($result()/10);
+    echo json_encode($result);
+  }
+
 }
 ?>

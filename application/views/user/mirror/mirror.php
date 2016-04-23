@@ -217,15 +217,16 @@
                 <div class="question_link"><a href="#"><?php echo $item->question_title;?></a></div>
               </div>
             <?php endforeach;?>
-            <div class="section-wrap-item">
+            <!-- <div class="section-wrap-item">
               <span class="profile-setion-time">于：2016-03-24 18:00:00 关注了问题</span>
               <div class="question_link"><a href="#">怎样深入学习php，成为php高手？</a></div>
             </div>
             <div class="section-wrap-item">
               <span class="profile-setion-time">于：2016-03-24 18:00:00 关注了问题</span>
               <div class="question_link"><a href="#">怎样深入学习php，成为php高手？</a></div>
-            </div>
+            </div> -->
           </div>
+          <ul id="example"></ul>
         </div>
       </div>
       <div class="col-md-4">
@@ -251,6 +252,66 @@
   </div>
   <div class="col-md-1"></div>
 </div>
+<script src="/BBS/public/bootstrap-paginator/src/bootstrap-paginator.js"></script>
+<script type='text/javascript'>
+  $.ajax({ // 查询该用户有多少条数据
+    url: "/BBS/index.php/User/Mirror/get_answer_count",
+    dataType: "json",
+    type: "POST",
+    data: {},
+    success: function(data){
+      // alert(data.total);
+      var options = {
+        bootstrapMajorVersion: 3,
+        currentPage: 1,
+        totalPages: data.total,
+        size:"normal",
+        alignment:"center",
+        itemTexts: function (type, page, current) {
+          switch (type) {
+            case "first":
+              return "第一页";
+            case "prev":
+              return "<";
+            case "next":
+              return ">";
+            case "last":
+              return "最后一页";
+            case "page":
+              return  page;
+          }
+        },
+        onPageClicked: function (e, originalEvent, type, page) {
+            // alert("type:" + type + ",Page:" + page);
+            $.ajax({ // 查询该用户有多少条数据
+              url: "/BBS/index.php/User/Mirror/get_answer_list2",
+              dataType: "json",
+              type: "POST",
+              data: {page: page},
+              success: function(data){
+                var html = '';
+                $.each(data , function(n , item){
+                  html += '<div class="section-wrap-item">'+
+                            '<span class="profile-setion-time">'+item.answer_time+' 回答问题</span>'+
+                            '<div class="question_link"><a href="#">'+item.question_title+'</a></div>'+
+                          '</div>';
+                });
+                $('.section-wrap-content').empty();
+                $('.section-wrap-content').append(html);
+                // <div class="section-wrap-item">
+                //   <span class="profile-setion-time">于：2016-03-24 18:00:00 关注了问题</span>
+                //   <div class="question_link"><a href="#">怎样深入学习php，成为php高手？</a></div>
+                // </div>
+                // alert('OK');
+              }
+            })
+        }
+      }
+      $('#example').bootstrapPaginator(options);
+
+    }
+  })
+</script>
 <script>
 $(function(){
   $('.info-empty-wrap a').on('click' , function(){

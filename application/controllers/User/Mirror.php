@@ -46,10 +46,40 @@ class Mirror extends CI_Controller{
     return $data;
   }
 
+  /**
+   * 获取用户回答的问题
+   *
+   * @param  [type] $account [description]
+   * @return [type]          [description]
+   */
   public function get_answer_list($account){
     $this->load->model('Wrk_answer');
-    $result = $this->Wrk_answer->query_answer_by_account($account);
+    $offset = 0;
+    $result = $this->Wrk_answer->query_answer_by_account($account , $offset);
+    // echo json_encode($result);
     return $result;
+  }
+
+  /**
+   * 获取当前用户的的所有回答条数，用户展示翻页按钮
+   *
+   * @return [type] [description]
+   */
+  public function get_answer_count(){
+    $this->load->model('Wrk_answer');
+    $account = $_SESSION['account'];
+    $result = $this->Wrk_answer->query_answer_count($account);
+    $data['total'] = ceil($result[0]->count/10);
+    echo json_encode($data);
+  }
+
+  public function get_answer_list2(){
+    $this->load->model('Wrk_answer');
+    $account = $_SESSION['account'];
+    $page = $this->input->post('page');
+    $offset = ($page-1)*10;
+    $result = $this->Wrk_answer->query_answer_by_account($account , $offset);
+    echo json_encode($result);
   }
 
 }
