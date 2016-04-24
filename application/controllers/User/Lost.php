@@ -22,7 +22,7 @@ class Lost extends CI_Controller{
       $this->load->view('user/discuss/lost_found' , $data);
       $this->load->view('user/template/footer');
     }else {
-      header('Location: ../Login/index');
+      header('Location: ../Register/index');
     }
   }
 

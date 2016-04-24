@@ -11,6 +11,7 @@ class Topics extends CI_Controller{
     $this->load->model('Basic_topic');
     $this->load->library('session');
 	$this->load->model('Wrk_topic_follow');
+	$this->load->model('Wrk_question');
   }
 
   public function index(){
@@ -28,7 +29,7 @@ class Topics extends CI_Controller{
       $this->load->view('user/question/topics' , $result);
       $this->load->view('user/template/footer');
     }else {
-      header('Location: ../Login/index');
+      header('Location: ../Register/index');
     }
   }
 
@@ -62,7 +63,24 @@ class Topics extends CI_Controller{
 		echo json_encode($data);
 
 	}
-
+	
+	public function topic_list($topic_id){
+	if (isset($_SESSION['account'])) {
+      $info['user'] = $_SESSION['nickname'];
+      $info['title'] = '话题列表 - 沙湖';
+      $this->load->view('user/template/header' , $info);
+	  $res = $this->Wrk_question->query_topic_question($topic_id);
+	  $topic_title = $this->Basic_topic->get_topic_by_id($topic_id);
+	  $data['list'] = $res;
+	  $data['topic_title'] = $topic_title;
+	  $this->load->view('user/question/topics_list',$data);
+      $this->load->view('user/template/footer');
+    }else {
+      header('Location: ../Register/index');
+    }
+	}
+	
+	
 }
 
 ?>

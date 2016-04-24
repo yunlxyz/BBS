@@ -27,7 +27,7 @@ class Follow extends CI_Controller{
       $this->load->view('user/follow/follow' , $result);
       $this->load->view('user/template/footer');
     }else {
-      header('Location: ../Login/index');
+      header('Location: ../Register/index');
     }
   }
 
