@@ -31,7 +31,7 @@ class Index extends CI_Controller{
       $this->load->view('user/index' , $result);
       $this->load->view('user/template/footer');
     }else {
-      header('Location: index.php/User/Login/index');
+      header('Location: index.php/User/Register/index');
     }
   }
 

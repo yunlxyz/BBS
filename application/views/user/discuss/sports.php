@@ -16,7 +16,7 @@
             <div class="goods-list">
               <?php foreach($list as $item){?>
                 <div class="goods-item">
-                  <div class="goods-lost－found">
+                  <div class="goods-lost-found">
                     <span class="label label-warning"><?php echo $item->sports_type;?></span>
                     <a href="javascript:void(0);" class="AlreadyBm" data-toggle="modal" data-sid="<?php echo $item->id; ?>"  data-target="#alreadyBaoming"><span class="sports-count pull-right">已有<span><?php echo $item->num ? $item->num : 0;?></span>人报名</span></a>
                   </div>

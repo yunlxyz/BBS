@@ -14,6 +14,13 @@ class Basic_topic extends CI_Model
     $query = $this->db->query($sql);
     return $query->result();
   }
+  
+  public function get_topic_by_id($topic_id){
+	  $sql = "SELECT topic_title FROM basic_topic WHERE id = $topic_id";
+	  $query = $this->db->query($sql)->row()->topic_title;
+	  return $query;
+  }
+  
 }
 
 ?>

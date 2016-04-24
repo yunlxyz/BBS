@@ -53,7 +53,7 @@ class Login extends CI_Controller{
    */
   public function loggout(){
     unset($_SESSION['account']);
-    header('Location: ../Login/index');
+    header('Location: ../Register/index');
   }
 }
 

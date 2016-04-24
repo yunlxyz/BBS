@@ -80,7 +80,22 @@ class Wrk_question extends CI_Model{
     $query = $this->db->query($sql , array($account));
     return $query->result();
   }
-
+  
+  /*
+   * 获取某一话题的所有问题
+   */
+  public function query_topic_question($topic_id){
+	$sql = "SELECT
+				a.*,b.topic_title
+			FROM
+				wrk_question a
+			INNER JOIN basic_topic b ON a.question_class = b.id
+			WHERE
+				a.question_class = $topic_id";
+	$query = $this->db->query($sql);
+	return $query->result();
+  }
+  
 }
 
 ?>

@@ -16,7 +16,7 @@
                 <?php foreach($topic as $item):?>
                   <div class="item">
                     <div class="blk">
-                      <a href="#">
+                      <a href="topic_list/<?php echo $item->id;?>">
                         <img src="<?php echo $item->topic_avatar;?>" />
                         <strong><?php echo $item->topic_title;?></strong>
                       </a>

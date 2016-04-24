@@ -13,7 +13,7 @@ class Register extends CI_Controller{
 	}
  
 	public function index(){
-		$data['title'] = '注册';
+		$data['title'] = '登录或注册';
 		$this->load->view('User/login/register' , $data);
 	}
 	
