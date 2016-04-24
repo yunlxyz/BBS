@@ -15,15 +15,15 @@ class Topics extends CI_Controller{
 
   public function index(){
     if (isset($_SESSION['account'])) {
-      $info['user'] = $_SESSION['account'];
+      $info['user'] = $_SESSION['nickname'];
       $info['title'] = '话题广场 - 沙湖';
       $this->load->view('user/template/header' , $info);
-	  $res = $this->Wrk_topic_follow->get_foto_by_account($_SESSION['account']);
-	  $arr = array();
-	  foreach($res as $value){
-		  $arr[] = $value->follow_topic;
-	  }
-	  $result['ftopic'] = $arr;
+	    $res = $this->Wrk_topic_follow->get_foto_by_account($_SESSION['account']);
+  	  $arr = array();
+  	  foreach($res as $value){
+  		  $arr[] = $value->follow_topic;
+  	  }
+	    $result['ftopic'] = $arr;
       $result['topic'] = $this->topic_all();
       $this->load->view('user/question/topics' , $result);
       $this->load->view('user/template/footer');

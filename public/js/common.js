@@ -36,34 +36,39 @@ $(document).ready(function(){
 
   $(document).on('click' , '.up' , function(){
     var answer_id = $(this).data('aid');
+    var is_like = $(this).data('islike');
     var mythis = $(this);
-    $.ajax({
-      type: "POST",
-      url: "index.php/Index/add_like",
-      data: {answer_id: answer_id} ,
-      success: function(data){
-        var json = eval('('+data+')');
-        if(json.code == "10000"){
-          mythis.addClass('pressed');
+    if (is_like == 1) {
+      $.ajax({
+        type: "POST",
+        url: "index.php/Index/delete_like",
+        data: {answer_id: answer_id} ,
+        success: function(data){
+          var json = eval('('+data+')');
+          if(json.code == "10000"){
+            mythis.removeClass('pressed');
+            mythis.next('.vote-info').children('small').text(mythis.next('.vote-info').children('small').text()-1);
+            // mythis.next('.vote-info span').prepend(mythis.next('.vote-info').children('small').text() -1);
+            mythis.data('islike' , 0);
+          }
         }
-      }
-    })
-  });
-
-  $(document).on('click' , '.up' , function(){
-    var answer_id = $(this).data('aid');
-    var mythis = $(this);
-    $.ajax({
-      type: "POST",
-      url: "index.php/Index/add_like",
-      data: {answer_id: answer_id} ,
-      success: function(data){
-        var json = eval('('+data+')');
-        if(json.code == "10000"){
-          mythis.addClass('pressed');
+      })
+    }else {
+      $.ajax({
+        type: "POST",
+        url: "index.php/Index/add_like",
+        data: {answer_id: answer_id} ,
+        success: function(data){
+          var json = eval('('+data+')');
+          if(json.code == "10000"){
+            mythis.addClass('pressed');
+            mythis.next('.vote-info').children('a').prepend('lvyun');
+            mythis.next('.vote-info').children('small').text(parseInt(mythis.next('.vote-info').children('small').text())+1);
+            mythis.data('islike' , 1);
+          }
         }
-      }
-    })
+      })
+    }
   });
 
 })

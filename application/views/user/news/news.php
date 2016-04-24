@@ -93,14 +93,14 @@
 <div class="modal fade" id="newsModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+      <!-- <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <!-- <h4 class="modal-title" id="myModalLabel">Modal title</h4> -->
-      </div>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div> -->
       <div class="modal-body">
-        <div class="model-title text-center"><h3>标题</h3></div>
-        <div class="model-sub text-center"><h4>摘要</h4></div>
-        <div class="model-time text-right"><small>编辑于2016-04-23 18:20 by root</small></div>
+        <div class="model-title text-center"><h4>标题</h4></div>
+        <div class="model-sub text-left"><h6>摘要</h6></div>
+        <div class="model-time text-left"><small>编辑于2016-04-23 18:20 by root</small></div>
         <div class="model-content"><p>内容</p></div>
       </div>
       <div class="modal-footer">
@@ -123,8 +123,8 @@
         success:function(data){
           if (data.code = 10000) {
             var item = data.news[0];
-            $('.model-title h3').text(item.news_title);
-            $('.model-sub h4').text(item.news_subtitle);
+            $('.model-title h4').text(item.news_title);
+            $('.model-sub h6').text('摘要    '+item.news_subtitle);
             $('.model-time small').text('编辑于 '+item.news_time + ' by ' +item.news_editor);
             $('.model-content p').text(item.news_decs);
             $('#newsModel').modal();

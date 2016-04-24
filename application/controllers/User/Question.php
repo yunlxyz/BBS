@@ -25,13 +25,11 @@ class Question extends CI_Controller{
    */
   public function index($question_id){
     if (isset($_SESSION['account'])) {
-      $info['user'] = $_SESSION['account'];
+      $info['user'] = $_SESSION['nickname'];
       $tmp_result = $this->question_singal((int)$question_id);
       $info['title'] = $tmp_result[0]->question_title.' - 沙湖';
       $result['question'] = $tmp_result;
-      $offset = 0;
-      $rows = 15;
-      $result['answer'] = $this->answer_all($question_id , $offset , $rows);
+      $result['answer'] = $this->answer_all($question_id);
       $this->load->view('user/template/header' , $info);
       $this->load->view('user/question/question' , $result);
       $this->load->view('user/template/footer');
@@ -92,9 +90,43 @@ class Question extends CI_Controller{
    * @param  int    $rows        [description]
    * @return array               [description]
    */
-  public function answer_all($question_id , $offset , $rows){
+  public function answer_all($question_id){
     $this->load->model('Wrk_answer');
-    $result = $this->Wrk_answer->query_answer_all($question_id , $offset , $rows);
+    $offset = 0;
+    $data = array();
+    $i = 0;
+    $result = $this->Wrk_answer->query_answer_all($question_id , $offset); //查询改问题所有答案limit 10
+    foreach ($result as $key => $value) {
+      $answer_id = $value->id;  //获取答案ID
+      $data[$i]['list'] = $result[$i];
+      $tmp_people = $this->get_answer_people($answer_id); //根据ID回去该答案最近的点赞用户
+      if (empty($tmp_people)) {
+        $data[$i]['people'] = '';
+      }else {
+        $data[$i]['people'] = $tmp_people;
+      }
+      $tmp_like = $this->judge_like_answer($answer_id); //判断当前用户是否点赞
+      if ($tmp_like[0]->total > 0) {
+        $data[$i]['is_like'] = 1;
+      }else {
+        $data[$i]['is_like'] = 0;
+      }
+      $i++;
+    }
+    return $data;
+    // var_dump($data);
+  }
+
+  public function judge_like_answer($answer_id){
+    $this->load->model('Wrk_like');
+    $account = $_SESSION['account'];
+    $result = $this->Wrk_like->query_judge_like($answer_id , $account);
+    return $result;
+  }
+
+  public function get_answer_people($answer_id){
+    $this->load->model('Wrk_like');
+    $result = $this->Wrk_like->query_like_people($answer_id);
     return $result;
   }
 
@@ -164,6 +196,12 @@ class Question extends CI_Controller{
     $answerer = $_SESSION['account'];
 
     $result = $this->Wrk_answer->save_publish_answer($answer_decs , $answerer , $answer_time , $question_id);
+    if ($result) {
+      $data['code'] = 10000;
+    }else {
+      $data['code'] = 10001;
+    }
+    echo json_encode($data);
   }
 
   public function get_question_count(){

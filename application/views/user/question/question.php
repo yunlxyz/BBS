@@ -8,17 +8,17 @@
           <div class="col-md-12 clearfix">
             <div class="main-content-inner">
               <div class="zm-tag">
-                <span class="label label-primary"><?php echo $question[0]->question_class;?></span>
-                <span class="label label-primary">标签2</span>
+                <span class="label label-primary"><?php echo $question[0]->topic_title;?></span>
+                <!-- <span class="label label-primary">标签2</span>
                 <span class="label label-primary">标签3</span>
                 <span class="label label-primary">标签4</span>
-                <span class="label label-primary">标签5</span>
+                <span class="label label-primary">标签5</span> -->
               </div>
               <div class="question-title clearfix">
                 <h4 id="question-title" data-qid="<?php echo $question[0]->id;?>"><?php echo $question[0]->question_title;?></h4>
                 <div class="question-info clearfix">
-                  <span><?php echo $question[0]->questioner;?></span>
-                  <div class="pull-right">提问于：<?php echo $question[0]->question_time;?></div>
+                  <!-- <span><?php echo $question[0]->nickname;?></span> -->
+                  <!-- <div class="pull-right">提问于：<?php echo $question[0]->question_time;?></div> -->
                 </div>
               </div>
               <div class="question-detail">
@@ -31,13 +31,30 @@
                 <?php foreach($answer as $item):?>
                   <div class="question-item-answer">
                     <div class="answer-head">
-                      <a href="#" class="avatar-link pull-right"><img src="<?php echo $item->user_avatar;?>" /></a>
-                      <a href="#" class="author-link"><?php echo $item->answerer;?></a><span class="bio">,<?php echo $item->introduction;?></span></div>
+                      <a href="#" class="avatar-link pull-right"><img src="<?php echo $item['list']->user_avatar;?>" /></a>
+                      <a href="#" class="author-link"><?php echo $item['list']->nickname;?></a><span class="bio">,<?php echo $item['list']->introduction;?></span></div>
                     <div class="answer-text">
-                      <p><?php echo $item->answer_decs;?></p>
+                      <p><?php echo $item['list']->answer_decs;?></p>
                       <div class="zantong">
-                        <a href="#"><span class="glyphicon glyphicon-thumbs-up"><span></a>未闻花名、ABC等<?php echo $item->like_count;?>人赞同
-                        <time class="pull-right">回答于：<?php echo $item->answer_time;?></time>
+                        <!-- <span class="pull-left"> -->
+                          <?php if($item['is_like'] == 1):?>
+                            <a class="up pressed" href="javascript:;"><span class="glyphicon glyphicon-thumbs-up"><span></a>
+                          <?php else:?>
+                            <a class="up" href="javascript:;"><span class="glyphicon glyphicon-thumbs-up"><span></a>
+                          <?php endif;?>
+                          <div class="vote-info">
+                            <?php if(empty($item['people'])):?>
+                              <a href="#"></a>
+                            <?php else:?>
+                              <?php foreach($item['people'] as $liker):?>
+                                <a href="#"><?php echo $liker->liker;?></a>
+                              <?php endforeach;?>
+                            <?php endif; ?>
+                            等<small><?php echo $item['list']->like_count;?></small>人赞同.
+                          </div>
+                            <!-- 等<?php echo $item['list']->like_count;?>人赞同. -->
+                        <!-- <span> -->
+                        <time>回答于<?php echo $item['list']->answer_time;?></time>
                       </div>
                     </div>
                   </div>
@@ -56,7 +73,7 @@
                 </div> -->
               </div>
               <div class="answer-editor-wrap">
-                <div class="answer-from">未闻花名</div>
+                <div class="answer-from"><?php echo $user;?></div>
                 <div id="summernote"></div>
                 <div class="answer-command text-right">
                   <button type="button" class="btn btn-primary submit">发布回答</button>

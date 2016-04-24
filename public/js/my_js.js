@@ -6,7 +6,7 @@ $(document).ready(function(){
     $('.detail-answer').each(function(){
       var text = $.trim($(this).text());
       var tmp_div = "<a href='javascript:void(0);' class='toggle-expand'>... 显示全部</a>";
-      if(text.length > 200){
+      if(text.length > 500){
         $(this).css('display','none');
         $(this).parent().children('.summary').text(text.substring(0 , 100));
         $(this).parent().children('.summary').append(tmp_div);

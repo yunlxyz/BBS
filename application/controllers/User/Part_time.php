@@ -14,7 +14,7 @@ class Part_time extends CI_Controller{
 
   public function index(){
     if (isset($_SESSION['account'])) {
-      $info['user'] = $_SESSION['account'];
+      $info['user'] = $_SESSION['nickname'];
       $info['title'] = '兼职信息 - 沙湖';
       $this->load->view('user/template/header' , $info);
 

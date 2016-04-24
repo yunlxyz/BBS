@@ -40,10 +40,10 @@
                   <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">发现 <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                      <li><a href="/BBS/index.php/User/Sports/index">一起运动 </a></li>
-                      <li><a href="#">我爱学习 </a></li>
+                      <li><a href="/BBS/index.php/User/Sports/index">运动 </a></li>
+                      <li><a href="#">学习 </a></li>
                       <li role="separator" class="divider"></li>
-                      <li><a href="/BBS/index.php/User/Part_time/index">兼职信息 </a></li>
+                      <li><a href="/BBS/index.php/User/Part_time/index">兼职 </a></li>
                       <li role="separator" class="divider"></li>
                       <li><a href="/BBS/index.php/User/Lost/index">失物招领</a></li>
                     </ul>

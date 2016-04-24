@@ -509,3 +509,14 @@ h4{
 .part-detail-time{
   color: #999;
 }
+
+/**
+ * news
+ */
+.model-time{
+  color: #999;
+  padding-bottom: 10px;
+}
+.model-sub{
+  padding-top: 5px;
+}

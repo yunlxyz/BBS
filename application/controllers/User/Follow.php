@@ -17,10 +17,11 @@ class Follow extends CI_Controller{
 
   public function index(){
     if (isset($_SESSION['account'])) {
-      $info['user'] = $_SESSION['account'];
+      $account = $_SESSION['account'];
+      $info['user'] = $_SESSION['nickname'];
       $info['title'] = '我关注的问题 - 沙湖';
       $this->load->view('user/template/header' , $info);
-      $tmp_question = $this->follow($info['user']);
+      $tmp_question = $this->follow($account);
       $result['list'] = $tmp_question;
       $result['total'] = count($tmp_question);
 

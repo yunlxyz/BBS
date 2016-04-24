@@ -13,12 +13,13 @@ class Mirror extends CI_Controller{
 
   public function index(){
     if (isset($_SESSION['account'])) {
-      $info['user'] = $_SESSION['account'];
+      $account = $_SESSION['account'];
+      $info['user'] = $_SESSION['nickname'];
       $info['title'] = '未闻花名 的个人主页 - 沙湖';
       $this->load->view('user/template/header' , $info);
-      $data['info'] = $this->user_info($info['user']);
-      $data['topic'] = $this->get_topci_follow($info['user']);
-      $data['answer'] = $this->get_answer_list($info['user']);
+      $data['info'] = $this->user_info($account);
+      $data['topic'] = $this->get_topci_follow($account);
+      $data['answer'] = $this->get_answer_list($account);
       $this->load->view('User/mirror/mirror' , $data);
       $this->load->view('user/template/footer');
     }else {
@@ -29,6 +30,7 @@ class Mirror extends CI_Controller{
   public function user_info($account){
     $this->load->model('Basic_user');
     $result = $this->Basic_user->query_user_info($account);
+    // var_dump($result);
     return $result;
   }
 

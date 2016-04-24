@@ -55,7 +55,7 @@
         </div><!-- //row -->
     </div> <!-- //container -->
 
-	
+
 </body>
 <script src="/BBS/public/bootstrap/js/jquery.min.js"></script>
 <script src="/BBS/public/bootstrap/js/jquery.form.js"></script>

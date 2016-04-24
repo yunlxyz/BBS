@@ -22,9 +22,12 @@ class Index extends CI_Controller{
   public function index(){
     if (isset($_SESSION['account'])) {
       $info['title'] = '首页 - 沙湖社区';
-      $info['user'] = $_SESSION['account'];
+      $info['user'] = $_SESSION['nickname'];
       $this->load->view('user/template/header' , $info);
-      $result['data'] =$this->query_question();
+
+      $page = $this->input->get('page');
+      $page = empty($page)? 1 : $page;
+      $result['data'] =$this->query_question($page);
       $this->load->view('user/index' , $result);
       $this->load->view('user/template/footer');
     }else {
@@ -56,6 +59,12 @@ class Index extends CI_Controller{
         $data[$i]['question'] = (array)$value; //问题数组
         $data[$i]['answer'] = (array)$hottest_answer[0]; //回答列表
         $data[$i]['like'] = $this->like_answer_people($hottest_answer[0]->id);
+        $tmp_like = $this->judge_like_answer($hottest_answer[0]->id);
+        if ($tmp_like[0]->total > 0) {
+          $data[$i]['like']['islike'] = 1;
+        }else {
+          $data[$i]['like']['islike'] = 0;
+        }
         $tmp_count = $this->judge_follow_question((int)$value->id); //查询用户是否已经关注问题
         if ($tmp_count > 0) { //标记用户是否已经关注问题
           $data[$i]['mark'] = 1;  //用户已经关注问题
@@ -92,6 +101,13 @@ class Index extends CI_Controller{
     return $result;
   }
 
+  public function judge_like_answer($answer_id){
+    $this->load->model('Wrk_like');
+    $account = $_SESSION['account'];
+    $result = $this->Wrk_like->query_judge_like($answer_id , $account);
+    return $result;
+  }
+
   /**
    * 查看当前答案点赞的人数
    * 根据答案ID查询所有点赞人数
@@ -115,6 +131,22 @@ class Index extends CI_Controller{
     $liker = $_SESSION['account'];
     $like_time = date('Y-m-d H:i:s' , time());
     $result = $this->Wrk_like->save_like($answer_id , $liker , $like_time);
+    if ($result) {
+      $data['code'] = 10000;
+    }else {
+      $data['code'] = 10001;
+    }
+    echo json_encode($data);
+  }
+
+  /**
+   * 取消点赞
+   *
+   */
+  public function delete_like(){
+    $answer_id = $this->input->post('answer_id');
+    $liker = $_SESSION['account'];
+    $result = $this->Wrk_like->delete_like($answer_id , $liker);
     if ($result) {
       $data['code'] = 10000;
     }else {

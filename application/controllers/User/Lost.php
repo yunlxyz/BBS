@@ -14,7 +14,7 @@ class Lost extends CI_Controller{
 
   public function index(){
     if (isset($_SESSION['account'])) {
-      $info['user'] = $_SESSION['account'];
+      $info['user'] = $_SESSION['nickname'];
       $info['title'] = '失物招领 - 沙湖';
       $this->load->view('user/template/header' , $info);
 

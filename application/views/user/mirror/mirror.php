@@ -11,16 +11,16 @@
             <div class="info-introduce clearfix">
               <!-- 头像 -->
               <div class="pull-left" data-name="avatar">
-                <?php if($item->user_avatar != ''):?>
+                <?php if($item->user_avatar != NULL):?>
                   <img src="<?php echo $item->user_avatar;?>" alt="" class="img-rounded">
                 <?php else:?>
-                  <img src="#" alt="" class="img-rounded">
+                  <img src="<?php echo 'http://localhost/BBS/public/images/basic/default_avatar.jpg';?>" alt="" class="img-rounded">
                 <?php endif;?>
               </div>
 
               <div class="pull-left header-user-describe">
                 <!-- 性别 -->
-                <?php if($item->sex != NULL):?>
+                <?php if($item->sex != ''):?>
                   <div class="editable-group">
                     <span class="glyphicon glyphicon-road"></span>
                     <!-- 显示用户信息 -->
@@ -260,55 +260,49 @@
     type: "POST",
     data: {},
     success: function(data){
-      // alert(data.total);
-      var options = {
-        bootstrapMajorVersion: 3,
-        currentPage: 1,
-        totalPages: data.total,
-        size:"normal",
-        alignment:"center",
-        itemTexts: function (type, page, current) {
-          switch (type) {
-            case "first":
-              return "第一页";
-            case "prev":
-              return "<";
-            case "next":
-              return ">";
-            case "last":
-              return "最后一页";
-            case "page":
-              return  page;
+      if(data.total > 1){
+        var options = {
+          bootstrapMajorVersion: 3,
+          currentPage: 1,
+          totalPages: data.total,
+          size:"normal",
+          alignment:"center",
+          itemTexts: function (type, page, current) {
+            switch (type) {
+              case "first":
+                return "第一页";
+              case "prev":
+                return "<";
+              case "next":
+                return ">";
+              case "last":
+                return "最后一页";
+              case "page":
+                return  page;
+            }
+          },
+          onPageClicked: function (e, originalEvent, type, page) {
+              $.ajax({ // 查询该用户有多少条数据
+                url: "/BBS/index.php/User/Mirror/get_answer_list2",
+                dataType: "json",
+                type: "POST",
+                data: {page: page},
+                success: function(data){
+                  var html = '';
+                  $.each(data , function(n , item){
+                    html += '<div class="section-wrap-item">'+
+                              '<span class="profile-setion-time">'+item.answer_time+' 回答问题</span>'+
+                              '<div class="question_link"><a href="#">'+item.question_title+'</a></div>'+
+                            '</div>';
+                  });
+                  $('.section-wrap-content').empty();
+                  $('.section-wrap-content').append(html);
+                }
+              })
           }
-        },
-        onPageClicked: function (e, originalEvent, type, page) {
-            // alert("type:" + type + ",Page:" + page);
-            $.ajax({ // 查询该用户有多少条数据
-              url: "/BBS/index.php/User/Mirror/get_answer_list2",
-              dataType: "json",
-              type: "POST",
-              data: {page: page},
-              success: function(data){
-                var html = '';
-                $.each(data , function(n , item){
-                  html += '<div class="section-wrap-item">'+
-                            '<span class="profile-setion-time">'+item.answer_time+' 回答问题</span>'+
-                            '<div class="question_link"><a href="#">'+item.question_title+'</a></div>'+
-                          '</div>';
-                });
-                $('.section-wrap-content').empty();
-                $('.section-wrap-content').append(html);
-                // <div class="section-wrap-item">
-                //   <span class="profile-setion-time">于：2016-03-24 18:00:00 关注了问题</span>
-                //   <div class="question_link"><a href="#">怎样深入学习php，成为php高手？</a></div>
-                // </div>
-                // alert('OK');
-              }
-            })
         }
+        $('#example').bootstrapPaginator(options);
       }
-      $('#example').bootstrapPaginator(options);
-
     }
   })
 </script>

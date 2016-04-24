@@ -16,7 +16,7 @@ class Wrk_answer extends CI_Model
    * @return array              [description]
    */
   public function query_hottest_answer($question_id){
-    $sql = 'SELECT a.* , u.introduction , u.user_avatar
+    $sql = 'SELECT a.* , u.introduction , u.user_avatar , u.nickname
             FROM wrk_answer a INNER JOIN basic_user u ON a.answerer = u.account
             WHERE a.question_id = ? AND
                   a.like_count = (SELECT MAX(like_count) FROM wrk_answer WHERE question_id = ?)';
@@ -34,12 +34,12 @@ class Wrk_answer extends CI_Model
    * @param  int    $rows        [description]
    * @return array               [description]
    */
-  public function query_answer_all($question_id , $offset , $rows){
-    $sql = 'SELECT a.* , u.introduction , u.user_avatar
+  public function query_answer_all($question_id , $offset){
+    $sql = 'SELECT a.* , u.introduction , u.user_avatar , u.nickname
             FROM wrk_answer a INNER JOIN basic_user u ON a.answerer = u.account
             WHERE a.question_id = ?
-            LIMIT ? , ?';
-    $query = $this->db->query($sql , array($question_id , $offset , $rows));
+            LIMIT ? , 10';
+    $query = $this->db->query($sql , array($question_id , $offset));
     log_message('info' , $sql);
     return $query->result();
   }
@@ -57,7 +57,7 @@ class Wrk_answer extends CI_Model
     $sql = 'INSERT INTO wrk_answer (answer_decs , answerer , answer_time , question_id)
             VALUES (? , ? , ? ,?)';
     $query = $this->db->query($sql , array($answer_decs , $answerer , $answer_time , $question_id));
-    return $query->result();
+    return $query;
   }
 
   public function query_answer_by_account($account , $offset){

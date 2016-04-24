@@ -3,10 +3,10 @@ $(document).ready(function(){
       height: 200,                 // set editor height
       minHeight: null,             // set minimum height of editor
       maxHeight: null,             // set maximum height of editor
-      focus: true ,
+      focus: false ,
+      lang: 'zh-CN' ,
       callbacks: {
         onImageUpload: function(files) {
-          // alert('OK');
           var $editor = $(this);
           sendFile(files[0], $editor);
         }
@@ -41,9 +41,26 @@ $(document).ready(function(){
             qid: qid
           },
           type: "POST",
+          dataType: "json",
           url: "http://localhost/BBS/index.php/User/Question/publish_answer",
-          success: function(url) {
-            alert("OK");
+          success: function(data) {
+            var html = '';
+            if (data.code == 10000) {
+              html +='<div class="question-item-answer">'+
+                      '<div class="answer-head">'+
+                        '<a href="#" class="avatar-link pull-right"><img src="http://localhost/BBS/public/images/demo.jpg" /></a>'+
+                        '<a href="#" class="author-link">回答者</a><span class="bio">,个人简介</span></div>'+
+                      '<div class="answer-text">'+
+                        '<p>'+code+'</p>'+
+                        '<div class="zantong">'+
+                          '<a href="#"><span class="glyphicon glyphicon-thumbs-up"><span></a> 0人赞同'+
+                          '<time class="pull-right">回答于：2016-03-24 18:00:00</time>'+
+                        '</div>'+
+                      '</div>'+
+                     '</div>';
+              $('.question-answer').append(html);
+              
+            }
           }
         });
       }else {

@@ -18,7 +18,7 @@ class Sports extends CI_Controller{
       $info['user'] = $_SESSION['nickname'];
       $info['title'] = '一起运动 - 沙湖';
       $this->load->view('user/template/header' , $info);
-	  $data['fsport'] = $this->get_followed_sport();
+	    $data['fsport'] = $this->get_followed_sport();
 
       $data['list'] = $this->get_sports_info();
       $this->load->view('user/discuss/sports' , $data);
@@ -92,7 +92,7 @@ class Sports extends CI_Controller{
     }
     echo json_encode($data);
   }
-  
+
   /**
    * 取消报名
    */

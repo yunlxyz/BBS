@@ -49,8 +49,9 @@ class Wrk_question extends CI_Model{
    * @return [type]              [description]
    */
   public function query_question_singal($question_id){
-    $sql = 'SELECT q.* , t.topic_title
-            FROM wrk_question q INNER JOIN basic_topic t ON q.question_class = t.id
+    $sql = 'SELECT q.* , t.topic_title , u.nickname
+            FROM (wrk_question q INNER JOIN basic_topic t ON q.question_class = t.id)
+              INNER JOIN basic_user u ON q.questioner = u.account
             WHERE q.id = ?';
     $query = $this->db->query($sql , array($question_id));
     return $query->result();
